@@ -16,7 +16,7 @@
                   <div class="row">
                     <div class="col-sm">
 
-                      <img src="uploads/avatars/{{ $user->avatar }}" style="width: 150px; height: 150px; float: left; border-radius: 50%;">
+                        <img src="{{ $user->getUsersAvatar() }}" style="width: 150px; height: 150px; float: left; border-radius: 50%;">
                       <!-- <form method="POST" action="{{ route('profile') }}">
 
                           <div class="form-group row">
