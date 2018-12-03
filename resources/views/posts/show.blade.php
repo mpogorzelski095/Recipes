@@ -38,7 +38,14 @@
 
             @foreach ($post->comments as $comment)
                 <li class="list-group-item" style="padding-top: 20px; padding-bottom: 5px;">
-                    <img src="{{ $comment->user->getUsersAvatar() }}" style="width: 32px; height: 32px;  border-radius: 50%;">
+
+                    @if ($comment->user->avatar != 'default.jpg')
+                        <img src="{{ $comment->user->getUsersAvatar() }}" style="width: 32px; height: 32px;  border-radius: 50%;">
+                    @else
+                        <div style="float:left; border-radius: 50%;">{!! Avatar::create($comment->user->name)->setDimension(32, 32)->setFontSize(12)->toSvg(); !!}</div>
+                    @endif
+
+
                 <strong style="padding-left: 5px;">{{ $comment->user->name }} {{ $comment->created_at->diffForHumans()}}</strong>:<br>
                 <p style="padding-left: 40px;">{{ $comment->body }}</p>
                 </li>

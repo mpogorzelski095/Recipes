@@ -16,7 +16,13 @@
                   <div class="row">
                     <div class="col-sm">
 
-                        <img src="{{ $user->getUsersAvatar() }}" style="width: 150px; height: 150px; float: left; border-radius: 50%;">
+                        @if ($user->avatar != 'default.jpg')
+                            <img src="{{ $user->getUsersAvatar() }}" style="width: 150px; height: 150px; float: left; border-radius: 50%;">
+                        @else
+                            {!! Avatar::create($user->name)->setDimension(150, 150)->toSvg(); !!}
+                        @endif
+
+
                       <!-- <form method="POST" action="{{ route('profile') }}">
 
                           <div class="form-group row">
@@ -59,7 +65,7 @@
 
                     </div>
                     <div class="col-sm">
-                        <strong>Name:</strong> {{ $user->name }} <br>
+                            <strong>Name:</strong> {{ $user->name }} <br>
                         <strong>Email:</strong> {{ $user->email }}
                     </div>
                     <div class="col-sm">

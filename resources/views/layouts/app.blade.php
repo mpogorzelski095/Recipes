@@ -58,7 +58,13 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="position: relative; padding-left: 50px;">
 
-                                    <img src="{{ Auth::user()->getUsersAvatar() }}" style="width: 32px; height: 32px; position:absolute; top:5px; left:10px; border-radius: 50%;">
+
+                                    @if (Auth::user()->avatar != 'default.jpg')
+                                        <img src="{{ Auth::user()->getUsersAvatar() }}" style="width: 32px; height: 32px; position:absolute; top:5px; left:10px; border-radius: 50%;">
+                                    @else
+                                        <div style="position:absolute; top:5px; left:10px; border-radius: 50%;">{!! Avatar::create(Auth::user()->name)->setDimension(32, 32)->setFontSize(12)->toSvg(); !!}</div>
+                                    @endif
+
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
