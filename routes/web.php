@@ -40,3 +40,11 @@ Route::get('/posts/{post}', 'PostsController@show');
 
 //Zapisywanie komentarza do postu
 Route::post('/posts/{post}/comments', 'CommentsController@store');
+
+//Strona główna
+Route::get('/tags', 'TagsController@index');
+//każda kategoria po id - w sumie to po nazwie
+Route::get('/tags/{tag}', 'TagsController@show');
+
+
+

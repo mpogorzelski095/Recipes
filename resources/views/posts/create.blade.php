@@ -23,6 +23,14 @@
       <label for="Title">Title</label>
       <input type="text" class="form-control" id="title" name="title" >
     </div>
+      <div class="form-group">
+          <label for="exampleSelect1">Kategoria</label>
+          <select name="tag" class="form-control">
+              @foreach($tags as $tag)
+                  <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+              @endforeach
+          </select>
+      </div>
     <div class="form-group">
       <label for="body">Body</label>
       <textarea id="body" name="body" class="form-control" rows="3" ></textarea>
