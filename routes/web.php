@@ -33,8 +33,6 @@ Route::delete('/posts/{post}', 'PostsController@destroy')->name('destroy');
 //Zapisywanie postów
 Route::post('/posts', 'PostsController@store');
 
-
-
 //Kazdy post osobno po id
 Route::get('/posts/{post}', 'PostsController@show');
 
@@ -45,6 +43,9 @@ Route::post('/posts/{post}/comments', 'CommentsController@store');
 Route::get('/tags', 'TagsController@index');
 //każda kategoria po id - w sumie to po nazwie
 Route::get('/tags/{tag}', 'TagsController@show');
+
+
+Route::post('/like','PostsController@postLikePost')->name('like');
 
 
 

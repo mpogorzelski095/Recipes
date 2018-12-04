@@ -10,7 +10,9 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
         //Comment::class to to samo co App/Comment
     }
-
+    public function likes(){
+        return $this->hasMany('App\Like');
+    }
     /**
      * The attributes that are mass assignable.
      *

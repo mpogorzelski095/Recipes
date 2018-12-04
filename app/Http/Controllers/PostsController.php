@@ -96,7 +96,8 @@ class PostsController extends Controller
       return redirect('/');
     }
 
-    public function postLikePost(Request $request){
+    public function postLikePost(Request $request)
+    {
         $post_id = $request['postId'];
         $is_like = $request['isLike'] === 'true';
         $update = false;
@@ -106,10 +107,10 @@ class PostsController extends Controller
         }
         $user = Auth::user();
         $like = $user->likes()->where('post_id', $post_id)->first();
-        if($like){
+        if ($like) {
             $already_like = $like->like;
             $update = true;
-            if($already_like == $is_like) {
+            if ($already_like == $is_like) {
                 $like->delete();
                 return null;
             }
@@ -119,9 +120,9 @@ class PostsController extends Controller
         $like->like = $is_like;
         $like->user_id = $user->id;
         $like->post_id = $post->id;
-        if($update){
+        if ($update) {
             $like->update();
-        } else{
+        } else {
             $like->save();
         }
         return null;
