@@ -30,6 +30,6 @@ class Post extends Model
     }
 
     public function likes(){
-        return $this->belongsTo('App\Like');
+        return $this->hasMany('App\Like');
     }
 }

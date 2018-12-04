@@ -24,6 +24,7 @@ jQuery(document).ready(function() {
             } else {
                 event.target.previousElementSibling.innerText = "Like";
             }
+            // tutaj pierdolij to odswiezanie tych lajkow
         });
     });
 });
