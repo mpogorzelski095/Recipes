@@ -47,5 +47,5 @@ Route::get('/tags/{tag}', 'TagsController@show');
 
 Route::post('/like','PostsController@postLikePost')->name('like');
 
-
+Route::get('/users/{user}', 'UserController@showuser');
 

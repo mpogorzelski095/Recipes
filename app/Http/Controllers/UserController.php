@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Auth;
 use Image;
 use Imgur;
+use App\Post;
+use App\User;
+
 class UserController extends Controller
 {
     public function __construct(){
@@ -14,6 +17,15 @@ class UserController extends Controller
         $user = Auth::user();
         return view('profile', compact('user'));
     }
+
+    public function showuser(User $user){
+//        dd($user);
+//        $posts = Post::where('user_id','=',Auth::user()->id)->paginate(5);
+        $posts = Post::where('user_id', '=', $user->id)->paginate(5);
+        return view('userprofile', compact('user', 'posts'));
+    }
+
+
     public function update_avatar(Request $request)
     {
         if ($request->hasFile('avatar')) {
