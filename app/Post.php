@@ -7,7 +7,7 @@ use Auth;
 class Post extends Model
 {
     // Tylko te można wypełnić
-    protected $fillable = ['title', 'body', 'user_id'];
+    protected $fillable = ['title', 'body', 'user_id', 'foodPic'];
     // protected $guarded = []; to jest taki filter, czyli czego nie przepuści
     //protected $guarded = [];
     public function comments() {
@@ -31,5 +31,12 @@ class Post extends Model
 
     public function likes(){
         return $this->hasMany('App\Like');
+    }
+
+    public function getFoodPic()
+    {
+        return $this->foodPic === "foodPic.png"
+            ? "/uploads/foodPic.png"
+            : $this->foodPic;
     }
 }

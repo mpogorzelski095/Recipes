@@ -48,8 +48,13 @@
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @else
                             <li class="nav-item">
-                                <a id="navbar" href="{{ route('index') }}" class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbar" href="{{ route('index') }}" class="nav-link"  role="button" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Strona główna <span class="caret"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="navbar" href="{{ route('tags') }}" class="nav-link"  role="button" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Kategorie <span class="caret"></span>
                                 </a>
                             </li>
                             <li class="nav-item">

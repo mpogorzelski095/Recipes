@@ -17,7 +17,7 @@
   </div>
   @endif
 
-  <form method="post" action="/posts">
+  <form method="post" enctype="multipart/form-data" action="/posts">
     @csrf
     <div class="form-group">
       <label for="Title">Title</label>
@@ -31,6 +31,21 @@
               @endforeach
           </select>
       </div>
+
+      <label>Update Profile Image</label>
+      <input type="file" name="foodPic">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
+          {{--<div class="form-group">--}}
+              {{--<label for="exampleFormControlFile1">Image</label>--}}
+              {{--<input name="foodPic" type="file" class="form-control-file" id="exampleFormControlFile1">--}}
+              {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
+          {{--</div>--}}
+
+
+
+
     <div class="form-group">
       <label for="body">Body</label>
       <textarea id="body" name="body" class="form-control" rows="3" ></textarea>

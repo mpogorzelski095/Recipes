@@ -8,6 +8,8 @@ use App\User;
 use App\Like;
 use Auth;
 use App\Tag;
+use Image;
+use Imgur;
 
 class PostsController extends Controller
 {
@@ -74,17 +76,33 @@ class PostsController extends Controller
       $this->validate(request(), [
         'title' => 'required|min:5|max:25',
         'body' => 'required|min:5|max:10000', 'tag' => 'required',
+        'foodPic' => 'required',
       ]);
+
+
       //Create a new post using request data
 
             // $post = new Post;
             // $post->title = request('title');
             // $post->body = request('body');
-       $post = Post::create([
-         'body' => request('body'),
-         'title' => request('title'),
-         'user_id' => Auth::user()->id,
-       ]);
+
+
+
+
+        if ($request->hasFile('foodPic')) {
+            $foodPic = $request->file('foodPic');
+            $image = Imgur::upload($foodPic);
+
+
+            $post = Post::create([
+                'body' => request('body'),
+                'title' => request('title'),
+                'user_id' => Auth::user()->id,
+                'foodPic' => $image->link(),
+
+            ]);
+
+        }
 
         $post->tags()->attach(request('tag'));
       //Można fajniej
@@ -95,6 +113,7 @@ class PostsController extends Controller
       // Redirect to the home pages
       return redirect('/');
     }
+
 
     public function postLikePost(Request $request)
     {

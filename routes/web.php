@@ -40,7 +40,7 @@ Route::get('/posts/{post}', 'PostsController@show');
 Route::post('/posts/{post}/comments', 'CommentsController@store');
 
 //Strona główna
-Route::get('/tags', 'TagsController@index');
+Route::get('/tags', 'TagsController@index')->name('tags');
 //każda kategoria po id - w sumie to po nazwie
 Route::get('/tags/{tag}', 'TagsController@show');
 
