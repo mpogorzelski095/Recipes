@@ -49,3 +49,4 @@ Route::post('/like','PostsController@postLikePost')->name('like');
 
 Route::get('/users/{user}', 'UserController@showuser');
 
+Route::get('/favorite', 'PostsController@favorite')->name('favorite');

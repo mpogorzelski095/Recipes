@@ -18,11 +18,13 @@
     <div class="card">
       <div class="card-header">
         <h1> {{ $post->title }} </h1>
-        {{ $post->user->name }}
+          <a href="/users/{{ $post->user->id }}">
+              {{ $post->user->name }}
+          </a>
         {{ $post->created_at->toFormattedDateString() }}
         </div>
       <div class="card-body">
-
+          <img src="{{ $post->getFoodPic() }}" style="width: 150px; height: 150px; float: left; border-radius: 50%;">
                 {{ $post->body }}
 
       </div>
@@ -46,7 +48,9 @@
                     @endif
 
 
-                <strong style="padding-left: 5px;">{{ $comment->user->name }} {{ $comment->created_at->diffForHumans()}}</strong>:<br>
+                <strong style="padding-left: 5px;">                        <a href="/users/{{ $post->user->id }}">
+                        {{ $comment->user->name }}
+                    </a> {{ $comment->created_at->diffForHumans()}}</strong>:<br>
                 <p style="padding-left: 40px;">{{ $comment->body }}</p>
                 </li>
             @endforeach

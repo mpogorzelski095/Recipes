@@ -99,6 +99,7 @@
                             {{ $post->created_at->toFormattedDateString() }}
                         </p>
                         <p>
+                            <img src="{{ $post->getFoodPic() }}" style="width: 150px; height: 150px; float: left; border-radius: 50%;">
                         {{ $post->body }}
                         <p>Likes:</p>{{ $post->likes()->count() }}
 

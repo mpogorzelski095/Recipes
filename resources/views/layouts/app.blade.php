@@ -58,6 +58,11 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a id="navbar" href="{{ route('favorite') }}" class="nav-link"  role="button" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Ulubione <span class="caret"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a id="navbar" class="nav-link" href="{{ url('/mypost') }}" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Moje przepisy <span class="caret"></span>
                                 </a>
@@ -99,6 +104,11 @@
         </nav>
         <div class="container" style="display: flex; justify-content: center; margin-top:50px;">
 
+                @if ($flash = session('message'))
+                    <div id="flash-message" class="alert alert-success" role="alert">
+                        {{ $flash }}
+                    </div>
+                @endif
 
                 @yield('content')
 

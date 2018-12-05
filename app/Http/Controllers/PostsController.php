@@ -28,6 +28,12 @@ class PostsController extends Controller
       return view('posts.mypost', compact('posts'));
     }
 
+    public function favorite(Post $post){
+        $posts = Post::where('user_id','=',Auth::user()->id)->paginate(5);
+
+        return view('posts.mypost', compact('posts'));
+    }
+
     public function show(Post $post){
       return view('posts.show', compact('post'));
     }
@@ -109,7 +115,8 @@ class PostsController extends Controller
 //      auth()->user()->publish(
 //        new Post(request(['title','body','tag']))
 //      );
-
+        session()->flash('message', 'You have successfully added the recipe!');
+//        flash('asdads');
       // Redirect to the home pages
       return redirect('/');
     }
