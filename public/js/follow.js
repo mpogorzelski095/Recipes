@@ -1,7 +1,7 @@
 var postId = 0;
 jQuery(document).ready(function() {
     jQuery(".like").click(function(event) {
-        console.log(event);
+        // console.log(event);
         event.preventDefault();
         postId =
             event.target.parentNode.parentNode.parentNode.dataset["postid"];
@@ -14,8 +14,8 @@ jQuery(document).ready(function() {
         }).done(function() {
             event.target.innerText = isLike
                 ? event.target.innerText === "Like"
-                    ? "You like this post"
-                    : "Like"
+                    ? "Unfollow"
+                    : "Follow"
                 : event.target.innerText === "Dislike"
                     ? "You don't like this post"
                     : "Dislike";

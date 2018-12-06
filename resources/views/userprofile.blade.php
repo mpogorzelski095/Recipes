@@ -68,6 +68,25 @@
                             </div>
                         </div>
 
+            <br>
+                        <a class="btn btn-success" href="{{ route('follow', $user->id )}}" role="button">Follow </a>
+                        <a class="btn btn-danger" href="{{ route('unfollow', $user->id )}}" role="button">Unfollow</a>
+                        <br><br>
+                       Liczba followersów {{ $followers->count() }} <br> <br>
+
+
+
+
+
+
+
+                        {{--@foreach ($followers as $follower)--}}
+
+                            {{--@if (Auth::user()->id == $follower->id )--}}
+                                {{--{{ $follower->id}}<a class="btn btn-danger" href="{{ route('unfollow', $user->id )}}" role="button">Unfollow</a>--}}
+                            {{--@endif--}}
+                               {{----}}
+                        {{--@endforeach--}}
 
 
 
