@@ -6,23 +6,27 @@
           <div class="col-sm-8 blog-main">
 
 
+            @if($posts->count() == 0)
+                  nie masz postów buraku
+             @else
+                  @foreach ($posts as $post)
+                      <div class="card">
+                          <div class="card-body">
+                              @include('posts.post')
+                              <a href="/posts/{{ $post->id }}/edit"><button type="button" class="btn btn-primary" style="margin-right: 10px; float:left; ">Edit</button></a>
+                              <form action="{{ route('destroy', ['post' => $post]) }}" method="POST">
+                                  @csrf
+                                  {{method_field('DELETE')}}
+                                  <button type="submit" class="btn btn-danger" style="float:left;">Delete</button>
+                          </div>
 
-          @foreach ($posts as $post)
-          <div class="card">
-            <div class="card-body">
-                @include('posts.post')
-                <a href="/posts/{{ $post->id }}/edit"><button type="button" class="btn btn-primary" style="margin-right: 10px; float:left; ">Edit</button></a>
-                <form action="{{ route('destroy', ['post' => $post]) }}" method="POST">
-                @csrf
-                {{method_field('DELETE')}}
-                <button type="submit" class="btn btn-danger" style="float:left;">Delete</button>
-            </div>
+                          </form>
+                      </div>
+                      <br>
 
-            </form>
-          </div>
-          <br>
+                  @endforeach
+             @endif
 
-          @endforeach
           <div class="container" style="display: flex; justify-content: center;">
 
 

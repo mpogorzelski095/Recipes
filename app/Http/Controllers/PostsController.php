@@ -24,6 +24,7 @@ class PostsController extends Controller
       return view('posts.index', compact('posts'));
     }
     public function mypost(Post $post){
+
       $posts = Post::where('user_id','=',Auth::user()->id)->paginate(5);
 
       return view('posts.mypost', compact('posts'));
