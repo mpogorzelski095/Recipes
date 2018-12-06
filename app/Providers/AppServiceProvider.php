@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
 use Carbon\Carbon;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Routing\UrlGenerator;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,26 @@ class AppServiceProvider extends ServiceProvider
         if (env('APP_ENV') !== 'local') {
             $url->forceScheme('https');
         }
+
+        Collection::macro('paginate', function (
+            $perPage,
+            $total = null,
+            $page = null,
+            $pageName = 'page'
+        ) {
+            $page =
+                $page ?: LengthAwarePaginator::resolveCurrentPage($pageName);
+            return new LengthAwarePaginator(
+                $this->forPage($page, $perPage),
+                $total ?: $this->count(),
+                $perPage,
+                $page,
+                [
+                    'path' => LengthAwarePaginator::resolveCurrentPath(),
+                    'pageName' => $pageName
+                ]
+            );
+        });
     }
 
     /**

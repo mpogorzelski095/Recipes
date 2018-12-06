@@ -10,6 +10,7 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
         //Comment::class to to samo co App/Comment
     }
+
     public function likes(){
         return $this->hasMany('App\Like');
     }
@@ -34,5 +35,15 @@ class User extends Authenticatable
         return $this->avatar === "default.jpg"
             ? "/uploads/avatars/default.jpg"
             : $this->avatar;
+    }
+
+    public function favoritePosts()
+    {
+        $postIds = $this->likes()
+            ->where('like', 1)
+            ->pluck('post_id');
+        $favoritePosts = collect(Post::findMany($postIds))->paginate(5);
+
+        return $favoritePosts;
     }
 }

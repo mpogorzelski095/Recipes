@@ -25,13 +25,12 @@
     </div>
       <div class="form-group">
           <label for="exampleSelect1">Kategoria</label>
-          <select name="tag" class="form-control">
-              @foreach($tags as $tag)
-                  <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+          <select name="category" class="form-control">
+              @foreach($categories as $category)
+                  <option value="{{ $category->id }}">{{ $category->name }}</option>
               @endforeach
           </select>
       </div>
-
       <label>Update Profile Image</label>
       <input type="file" name="foodPic">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">

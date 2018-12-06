@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
@@ -29,9 +30,9 @@ class PostsController extends Controller
     }
 
     public function favorite(Post $post){
-        $posts = Post::where('user_id','=',Auth::user()->id)->paginate(5);
+        $posts = Auth::user()->favoritePosts();
 
-        return view('posts.mypost', compact('posts'));
+        return view('posts.favorite', compact('posts'));
     }
 
     public function show(Post $post){
@@ -43,10 +44,9 @@ class PostsController extends Controller
     }
 
     public function create(){
-
-        $tags = Tag::all();
-//        dd($tags);
-        return view('posts.create', compact('tags'));
+        $categories = Category::all();
+//       dd($categories);
+        return view('posts.create', compact('categories'));
     }
     public function edit($id)
     {
@@ -81,7 +81,7 @@ class PostsController extends Controller
 //        dd($request->all());
       $this->validate(request(), [
         'title' => 'required|min:5|max:25',
-        'body' => 'required|min:5|max:10000', 'tag' => 'required',
+        'body' => 'required|min:5|max:10000', 'category' => 'required',
         'foodPic' => 'required',
       ]);
 
@@ -100,17 +100,58 @@ class PostsController extends Controller
             $image = Imgur::upload($foodPic);
 
 
-            $post = Post::create([
+            Post::create([
                 'body' => request('body'),
                 'title' => request('title'),
                 'user_id' => Auth::user()->id,
                 'foodPic' => $image->link(),
-
+                'category_id' => request('category'),
             ]);
 
         }
 
-        $post->tags()->attach(request('tag'));
+
+
+
+        //Tak było z tagami:
+//        $this->validate(request(), [
+//            'title' => 'required|min:5|max:25',
+//            'body' => 'required|min:5|max:10000', 'tag' => 'required', 'category' => 'required',
+//            'foodPic' => 'required',
+//        ]);
+//
+//
+//        //Create a new post using request data
+//
+//        // $post = new Post;
+//        // $post->title = request('title');
+//        // $post->body = request('body');
+//
+//
+//
+//
+//        if ($request->hasFile('foodPic')) {
+//            $foodPic = $request->file('foodPic');
+//            $image = Imgur::upload($foodPic);
+//
+//
+//            $post = Post::create([
+//                'body' => request('body'),
+//                'title' => request('title'),
+//                'user_id' => Auth::user()->id,
+//                'foodPic' => $image->link(),
+//                'category_id' => request('category'),
+//            ]);
+//
+//        }
+//
+//        $post->tags()->attach(request('tag'));
+
+
+
+
+
+
       //Można fajniej
 //      auth()->user()->publish(
 //        new Post(request(['title','body','tag']))

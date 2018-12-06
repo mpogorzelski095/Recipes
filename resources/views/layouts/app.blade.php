@@ -53,7 +53,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a id="navbar" href="{{ route('tags') }}" class="nav-link"  role="button" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbar" href="{{ route('categories') }}" class="nav-link"  role="button" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Kategorie <span class="caret"></span>
                                 </a>
                             </li>

@@ -8,7 +8,7 @@ $factory->define(App\Post::class, function (Faker $faker) {
         'user_id' => User::all()->random()->id,
         'title' => $faker->sentence(),
         'body' => $faker->paragraphs(rand(5,20), true),
-        //
+        'category_id' => $faker->numberBetween($min = 1, $max = 7),
     ];
 });
 

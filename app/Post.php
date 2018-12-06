@@ -7,7 +7,7 @@ use Auth;
 class Post extends Model
 {
     // Tylko te można wypełnić
-    protected $fillable = ['title', 'body', 'user_id', 'foodPic'];
+    protected $fillable = ['title', 'body', 'user_id', 'foodPic', 'category_id'];
     // protected $guarded = []; to jest taki filter, czyli czego nie przepuści
     //protected $guarded = [];
     public function comments() {
@@ -18,7 +18,9 @@ class Post extends Model
     public function user(){ //$post->user->name albo $comment->post->user
       return $this->belongsTo(User::class);
     }
-
+    public function category(){ //$post->user->name albo $comment->post->user
+        return $this->belongsTo(Category::class);
+    }
     public function addComment($body)
     {
       $user_id = auth()->id();

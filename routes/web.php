@@ -50,3 +50,8 @@ Route::post('/like','PostsController@postLikePost')->name('like');
 Route::get('/users/{user}', 'UserController@showuser');
 
 Route::get('/favorite', 'PostsController@favorite')->name('favorite');
+
+
+Route::get('/categories', 'CategoriesController@index')->name('categories');
+//każda kategoria po id - w sumie to po nazwie
+Route::get('/categories/{category}', 'CategoriesController@show');
