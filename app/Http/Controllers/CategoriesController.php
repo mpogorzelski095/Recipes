@@ -9,7 +9,8 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-        $categories = Category::pluck('name');
+        $categories = Category::orderBy('name', 'asc')->get();
+//        $categories = Category::pluck('name');
         return view('posts.categories', compact('categories'));
     }
 

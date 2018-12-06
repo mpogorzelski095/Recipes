@@ -6,8 +6,9 @@
         <ol class="list-unstyled">
             @foreach($categories as $category)
                 <li>
-                    <a href="/categories/{{ $category }}">
-                        {{ $category }}
+                    <a href="/categories/{{ $category->name }}">
+                        {{ $category->name }}
+                        {{ $category->posts->count() }}
                     </a>
                 </li>
             @endforeach
