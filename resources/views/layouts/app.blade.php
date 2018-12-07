@@ -101,13 +101,15 @@
                 </div>
             </div>
         </nav>
-        <div class="container" style="display: flex; justify-content: center; margin-top:50px;">
+        <div class="container" style="margin-top:50px;">
+            {{--display: flex; justify-content: center;--}}
 
-                @if ($flash = session('message'))
-                    <div id="flash-message" class="alert alert-success" role="alert">
-                        {{ $flash }}
-                    </div>
-                @endif
+
+                {{--@if ($flash = session('message'))--}}
+                    {{--<div id="flash-message" class="alert alert-success" role="alert">--}}
+                        {{--{{ $flash }}--}}
+                    {{--</div>--}}
+                {{--@endif--}}
 
                 @yield('content')
 
@@ -115,14 +117,16 @@
 
     </div>
 
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
     <script src="{{ asset('/js/like.js') }}"></script>
+    <script src="{{ asset('/js/follow.js') }}"></script>
     <script>
         var token = '{{ Session::token() }}';
         var urlLike = '{{ route('like') }}';
+        var urlFollow = '{{ route('toggle_follow') }}';
     </script>
 
 </body>

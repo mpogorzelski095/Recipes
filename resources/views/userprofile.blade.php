@@ -24,7 +24,6 @@
 
 
                             <!-- <form method="POST" action="{{ route('profile') }}">
-
                           <div class="form-group row">
                               <label for="file" class="col-sm-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
                               <div class="col-md-6">
@@ -68,12 +67,13 @@
                             </div>
                         </div>
 
-            <br>
-                        <a class="btn btn-success" href="{{ route('follow', $user->id )}}" role="button">Follow </a>
-                        <a class="btn btn-danger" href="{{ route('unfollow', $user->id )}}" role="button">Unfollow</a>
+                        <br>
+                        {{--<a class="btn btn-success" href="{{ route('follow', $user->id )}}" role="button">Follow </a>--}}
+                        {{--<a class="btn btn-danger" href="{{ route('unfollow', $user->id )}}" role="button">Unfollow</a>--}}
+                        @php $follows = $user->followers()->where('follower_id', auth()->id())->first() @endphp
+                        <a href="#" id="follow-btn" class="btn {{$follows ? 'btn-danger' : 'btn-success'}}" role="button" data-userid="{{$user->id}}">{{$follows ? 'Unfollow' : 'Follow'}}</a>
                         <br><br>
-                       Liczba followersów {{ $followers->count() }} <br> <br>
-
+                        Liczba followersów <span id="followers-count">{{ $followers->count() }}</span> <br> <br>
 
 
 
@@ -82,10 +82,10 @@
 
                         {{--@foreach ($followers as $follower)--}}
 
-                            {{--@if (Auth::user()->id == $follower->id )--}}
-                                {{--{{ $follower->id}}<a class="btn btn-danger" href="{{ route('unfollow', $user->id )}}" role="button">Unfollow</a>--}}
-                            {{--@endif--}}
-                               {{----}}
+                        {{--@if (Auth::user()->id == $follower->id )--}}
+                        {{--{{ $follower->id}}<a class="btn btn-danger" href="{{ route('unfollow', $user->id )}}" role="button">Unfollow</a>--}}
+                        {{--@endif--}}
+                        {{----}}
                         {{--@endforeach--}}
 
 

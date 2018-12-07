@@ -41,4 +41,6 @@ class Post extends Model
             ? "/uploads/foodPic.png"
             : $this->foodPic;
     }
+
+
 }

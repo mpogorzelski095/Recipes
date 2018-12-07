@@ -26,6 +26,5 @@
         @else
 
         @endif
-
     </div>
 </div>

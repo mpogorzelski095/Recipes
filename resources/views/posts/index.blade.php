@@ -3,24 +3,59 @@
 
 @section ('content')
 
-          <div class="col-sm-8 blog-main">
 
 
+    <div class="row justify-content-center">
+        <div class="col-sm-8">
+            @foreach ($posts as $post)
+                <div class="card">
+                    <div class="card-body">
+                        @include('posts.post')
+                    </div>
+                </div>
+                <br>
+            @endforeach
+        </div>
+    </div>
 
-          @foreach ($posts as $post)
-          <div class="card">
-            <div class="card-body">
-                @include('posts.post')
+
+    <div class="row justify-content-center">
+        <div class="col-sm-4">
+            <div class="card" style="width: 21rem;">
+                <img class="card-img-top" src="https://i.imgur.com/MmLmgYf.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
             </div>
-          </div>
-          <br>
-          @endforeach
-          <div class="container" style="display: flex; justify-content: center;">
-
-
-                {{ $posts->links() }}
-
-          </div>
-          </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card" style="width: 21rem;">
+                <img class="card-img-top" src="https://i.imgur.com/MmLmgYf.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card" style="width: 21rem;">
+                <img class="card-img-top" src="https://i.imgur.com/MmLmgYf.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-sm-4">
+            {{ $posts->links() }}
+        </div>
+    </div>
 
 @endsection
