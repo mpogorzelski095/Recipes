@@ -11,7 +11,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $json = File::get('database/json/tags.json');
+        $json = File::get('database/json/categories.json');
         $data = json_decode($json);
 
         foreach ($data as $obj) {
