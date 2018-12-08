@@ -27,6 +27,27 @@
           <img src="{{ $post->getFoodPic() }}" style="width: 150px; height: 150px; float: left; border-radius: 50%;">
                 {{ $post->body }}
 
+
+          @if ($post->ingredients != "")
+          @foreach(explode(',', $post->ingredients) as $info)
+          <li>{{$info}}</li>
+          @endforeach
+          @endif
+          <p>Likes:</p>{{ $post->likes()->count() }}
+
+          </p>
+          <div>
+              @if (Auth::user() != false)
+                  {{--dopisać ilość lajków--}}
+                  <div class="interaction">
+                      <a href="#" class="btn btn-xs btn-warning like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? 'You like this post' : 'Like' : 'Like'  }}</a>
+                  </div>
+              @else
+
+              @endif
+          </div>
+
+
       </div>
 
     </div>

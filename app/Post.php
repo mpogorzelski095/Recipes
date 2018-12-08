@@ -7,7 +7,7 @@ use Auth;
 class Post extends Model
 {
     // Tylko te można wypełnić
-    protected $fillable = ['title', 'body', 'user_id', 'foodPic', 'category_id'];
+    protected $fillable = ['title', 'body','ingredients', 'user_id', 'foodPic', 'category_id'];
     // protected $guarded = []; to jest taki filter, czyli czego nie przepuści
     //protected $guarded = [];
     public function comments() {

@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
           $table->integer('category_id');
           $table->string('title');
           $table->text('body');
+          $table->text('ingredients');
           $table->string('foodPic')->default('foodPic.png');
           $table->timestamps();
         });

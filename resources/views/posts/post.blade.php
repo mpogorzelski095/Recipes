@@ -8,12 +8,24 @@
 
         <a href="/users/{{ $post->user->id }}">
             {{ $post->user->name }}
+
         </a>
         {{ $post->created_at->toFormattedDateString() }}
     </p>
     <p>
         <img src="{{ $post->getFoodPic() }}" style="width: 150px; height: 150px; float: left; border-radius: 50%;">
-        {{ $post->body }}
+
+    {{--{{ str_limit($post->user->name, $limit = 2, $end = '...') }} keep ridingS--}}
+
+
+        {{ str_limit($post->body, $limit = 500, $end = '...') }}  <a href="/posts/{{ $post->id }}">keep riding
+        </a>
+        {{--@if ($post->body != "")--}}
+            {{--@foreach(explode(',', $post->body) as $info)--}}
+                {{--<li>{{$info}}</li>--}}
+    {{--@endforeach--}}
+    {{--@endif--}}
+
        <p>Likes:</p>{{ $post->likes()->count() }}
 
     </p>

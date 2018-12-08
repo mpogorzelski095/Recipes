@@ -83,7 +83,7 @@ class PostsController extends Controller
       $this->validate(request(), [
         'title' => 'required|min:5|max:25',
         'body' => 'required|min:5|max:10000', 'category' => 'required',
-        'foodPic' => 'required',
+        'foodPic' => 'required', 'ingredients' => 'required',
       ]);
 
 
@@ -103,6 +103,7 @@ class PostsController extends Controller
 
             Post::create([
                 'body' => request('body'),
+                'ingredients' => request('ingredients'),
                 'title' => request('title'),
                 'user_id' => Auth::user()->id,
                 'foodPic' => $image->link(),

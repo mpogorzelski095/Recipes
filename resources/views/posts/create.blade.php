@@ -46,9 +46,13 @@
 
 
     <div class="form-group">
-      <label for="body">Body</label>
-      <textarea id="body" name="body" class="form-control" rows="3" ></textarea>
-    </div>
+          <label for="body">Body</label>
+          <textarea id="body" name="body" class="form-control" rows="3" ></textarea>
+      </div>
+      <div class="form-group">
+          <label for="ingredients">ingredients - prosze wpisywać po przecinku :v </label>
+          <textarea id="ingredients" name="ingredients" class="form-control" rows="3" ></textarea>
+      </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
