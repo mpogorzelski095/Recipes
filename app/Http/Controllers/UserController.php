@@ -37,35 +37,7 @@ class UserController extends Controller
         $user = Auth::user();
         return view('profile', compact('user'));
     }
-    /**
-     * Follow the user.
-     *
-     * @param $profileId
-     *
-     */
-    public function follow(int $profileId)
-    {
-        $user1 = User::find($profileId);
-        //        if(! $user) {
-        //            return redirect()->back();
-        //        }
-        //        $user->followers()->attach(auth()->user()->id);
-        $user = Auth::user();
-        $user1->follow($user);
-        return redirect()->back();
-    }
-    public function unfollow(int $profileId)
-    {
-        $user1 = User::find($profileId);
-        //        if(! $user) {
-        //
-        //            return redirect()->back();
-        //        }
-        //        $user->followers()->attach(auth()->user()->id);
-        $user = Auth::user();
-        $user1->unfollow($user);
-        return redirect()->back();
-    }
+
     public function toggleFollow()
     {
         $user = User::find(request('userId'));

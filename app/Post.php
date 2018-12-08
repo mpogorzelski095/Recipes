@@ -31,10 +31,6 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    public function likes(){
-        return $this->hasMany('App\Like');
-    }
-
     public function getFoodPic()
     {
         return $this->foodPic === "foodPic.png"
@@ -42,5 +38,26 @@ class Post extends Model
             : $this->foodPic;
     }
 
+    function likes()
+    {
+        return $this->belongsToMany(
+            'App\Post',
+            'likes',
+            'post_id',
+            'user_id'
+        )->withTimestamps();
+    }
+
+    public function toggleLike($userId)
+    {
+        $alreadyLike = $this->likes()
+            ->where('user_id', $userId)
+            ->first();
+        if ($alreadyLike) {
+            $this->likes()->detach($userId);
+        } else {
+            $this->likes()->attach($userId);
+        }
+    }
 
 }

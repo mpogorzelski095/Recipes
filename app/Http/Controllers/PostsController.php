@@ -21,6 +21,7 @@ class PostsController extends Controller
     public function index(){
       //$posts = Post::all();
       $posts = Post::latest()->paginate(5);
+
       return view('posts.index', compact('posts'));
     }
     public function mypost(Post $post){
@@ -164,37 +165,13 @@ class PostsController extends Controller
       return redirect('/');
     }
 
-
-    public function postLikePost(Request $request)
+    public function toggleLike()
     {
-        $post_id = $request['postId'];
-        $is_like = $request['isLike'] === 'true';
-        $update = false;
-        $post = Post::find($post_id);
-        if (!$post) {
-            return null;
-        }
-        $user = Auth::user();
-        $like = $user->likes()->where('post_id', $post_id)->first();
-        if ($like) {
-            $already_like = $like->like;
-            $update = true;
-            if ($already_like == $is_like) {
-                $like->delete();
-                return null;
-            }
-        } else {
-            $like = new Like();
-        }
-        $like->like = $is_like;
-        $like->user_id = $user->id;
-        $like->post_id = $post->id;
-        if ($update) {
-            $like->update();
-        } else {
-            $like->save();
-        }
-        return null;
+        $post = Post::find(request('postId'));
+        $post->toggleLike(auth()->id());
+        return response()->json([
+            'currentNumberOfLikes' => $post->likes()->count()
+        ]);
     }
 
 

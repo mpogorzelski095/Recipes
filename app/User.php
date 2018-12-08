@@ -53,14 +53,7 @@ class User extends Authenticatable
             'follower_id'
         )->withTimestamps();
     }
-    function follow(User $user)
-    {
-        $this->followers()->attach($user->id);
-    }
-    function unfollow(User $user)
-    {
-        $this->followers()->detach($user->id);
-    }
+
     public function toggleFollow($followerId)
     {
         $alreadyFollows = $this->followers()

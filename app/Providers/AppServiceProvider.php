@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(UrlGenerator $url)
     {
         Schema::defaultStringLength(191);
-        Carbon::setLocale(env('LOCALE', 'pl'));
+//        Carbon::setLocale(env('LOCALE', 'pl'));
 
         if (env('APP_ENV') !== 'local') {
             $url->forceScheme('https');
