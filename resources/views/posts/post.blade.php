@@ -15,28 +15,24 @@
     <p>
         <img src="{{ $post->getFoodPic() }}" style="width: 150px; height: 150px; float: left; border-radius: 50%;">
 
-    {{--{{ str_limit($post->user->name, $limit = 2, $end = '...') }} keep ridingS--}}
+        {{--{{ str_limit($post->user->name, $limit = 2, $end = '...') }} keep ridingS--}}
 
 
         {{ str_limit($post->body, $limit = 500, $end = '...') }}  <a href="/posts/{{ $post->id }}">keep riding
         </a>
         {{--@if ($post->body != "")--}}
-            {{--@foreach(explode(',', $post->body) as $info)--}}
-                {{--<li>{{$info}}</li>--}}
-    {{--@endforeach--}}
-    {{--@endif--}}
-
-       <p>Likes:</p>{{ $post->likes()->count() }}
-
-    Liczba lajków <span id="likes-count">{{ $post->likes()->count() }}</span> <br> <br>
+        {{--@foreach(explode(',', $post->body) as $info)--}}
+        {{--<li>{{$info}}</li>--}}
+        {{--@endforeach--}}
+        {{--@endif--}}
     </p>
     <div>
         @if (Auth::user() != false)
 
             @php $likes = $post->likes()->where('user_id', auth()->id())->first() @endphp
-            <a href="#" id="like-btn" class="btn {{$likes ? 'btn-danger' : 'btn-success'}}" role="button" data-postid="{{$post->id}}">{{$likes ? 'DisLike' : 'Like'}}</a>
+            <a href="#" class="btn {{$likes ? 'btn-danger' : 'btn-success'}} like-btn" role="button" data-postid="{{$post->id}}">{{$likes ? 'DisLike' : 'Like'}}</a>
             <br><br>
-            Liczba lajków  <span id="likes-count">{{ $post->likes()->count() }}</span> <br> <br>
+            Liczba lajków  <span id="likes-count-{{$post->id}}">{{ $post->likes()->count() }}</span> <br> <br>
         @else
 
         @endif

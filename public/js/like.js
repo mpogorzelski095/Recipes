@@ -1,11 +1,10 @@
 $(document).ready(function() {
-    $("#like-btn").click(function(event) {
-
+    $(".like-btn").click(function(event) {
         event.preventDefault();
 
         var likeButton = event.target;
-        var likesCount = document.getElementById("likes-count");
         var postId = likeButton.dataset.postid;
+        var likesCount = document.getElementById(`likes-count-${postId}`);
 
         $.ajax({
             method: "POST",
@@ -31,15 +30,6 @@ $(document).ready(function() {
             });
     });
 });
-
-
-
-
-
-
-
-
-
 
 //         var isLike = event.target.previousElementSibling == null;
 //
@@ -72,6 +62,3 @@ $(document).ready(function() {
 // //         });
 // //     });
 // // });
-
-
-

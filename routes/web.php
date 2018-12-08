@@ -36,10 +36,9 @@ Route::get('/categories', 'CategoriesController@index')->name('categories');
 //każda kategoria po id - w sumie to po nazwie
 Route::get('/categories/{category}', 'CategoriesController@show');
 Route::get('/users/{user}', 'UserController@showuser');
-
 Route::post('users/toggle_follow', 'UserController@toggleFollow')->name(
     'toggle_follow'
 );
-Route::post('posts/toggle_like', 'PostController@toggleLike')->name(
+Route::post('posts/toggle_like', 'PostsController@toggleLike')->name(
     'toggle_like'
 );

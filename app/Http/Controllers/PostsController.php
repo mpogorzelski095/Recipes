@@ -18,6 +18,25 @@ class PostsController extends Controller
       $this->middleware('auth')->except(['index']);
     }
 
+
+
+//    public function sort(Request $request){
+//        $this->validate(request(), [
+//            'sort' => 'required',
+//        ]);
+//        $option = $request->input('sort');
+//        dd($option);
+//        if($option == 1)
+//            $posts = Post::latest()->paginate(1);
+//        elseif($option == 2)
+//            $posts = Post::oldest()->paginate(10);
+//        else
+//            $posts = Post::latest()->paginate(5);
+//
+//
+//        return view('posts.index', compact('posts'));
+//    }
+
     public function index(){
       //$posts = Post::all();
       $posts = Post::latest()->paginate(5);

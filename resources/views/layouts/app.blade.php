@@ -125,7 +125,7 @@
     <script src="{{ asset('/js/follow.js') }}"></script>
     <script>
         var token = '{{ Session::token() }}';
-        var urlLike = '{{ route('like') }}';
+        var urlLike = '{{ route('toggle_like') }}';
         var urlFollow = '{{ route('toggle_follow') }}';
     </script>
 
