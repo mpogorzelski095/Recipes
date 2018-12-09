@@ -40,7 +40,6 @@
 
     <form method="post" enctype="multipart/form-data" action="{{ route('sort2') }}">
         @csrf
-
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01">Sort by</label>
@@ -52,12 +51,7 @@
                 <option href="/?sort2=4" value="4">Comments</option>
             </select>
         </div>
-
-
-
-
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>

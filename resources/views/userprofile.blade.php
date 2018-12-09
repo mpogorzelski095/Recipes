@@ -123,15 +123,16 @@
                         <p>
                             <img src="{{ $post->getFoodPic() }}" style="width: 150px; height: 150px; float: left; border-radius: 50%;">
                         {{ $post->body }}
-                        <p>Likes:</p>{{ $post->likes()->count() }}
 
                         </p>
                         <div>
                             @if (Auth::user() != false)
-                                {{--dopisać ilość lajków--}}
-                                <div class="interaction">
-                                    <a href="#" class="btn btn-xs btn-warning like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? 'You like this post' : 'Like' : 'Like'  }}</a>
-                                </div>
+
+                                @php $likes = $post->likes()->where('user_id', auth()->id())->first() @endphp
+                                <a href="#" class="btn {{$likes ? 'btn-danger' : 'btn-success'}} like-btn" role="button" data-postid="{{$post->id}}">{{$likes ? 'DisLike' : 'Like'}}</a>
+                                <br><br>
+                                Liczba lajków  <span id="likes-count-{{$post->id}}">{{ $post->likes()->count() }}</span> <br> <br>
+                                Liczba komentarzy  <span>{{ $post->comments()->count() }}</span> <br> <br>
                             @else
 
                             @endif

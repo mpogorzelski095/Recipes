@@ -21,9 +21,16 @@ class UserController extends Controller
     {
         //        dd($user);
         //        $posts = Post::where('user_id','=',Auth::user()->id)->paginate(5);
-        $posts = Post::where('user_id', '=', $user->id)->paginate(5);
-        $followers = $user->followers;
-        return view('userprofile', compact('user', 'posts', 'followers'));
+
+        if($user->id == Auth::user()->id){
+            $user = Auth::user();
+            return view('profile', compact('user'));
+        }else{
+            $posts = Post::where('user_id', '=', $user->id)->paginate(5);
+            $followers = $user->followers;
+            return view('userprofile', compact('user', 'posts', 'followers'));
+        }
+
     }
     public function update_avatar(Request $request)
     {

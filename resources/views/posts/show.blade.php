@@ -64,7 +64,7 @@
         <div class="comments">
             <ul class="list-group">
 
-                @foreach ($post->comments as $comment)
+                @foreach ($comments as $comment)
                     <li class="list-group-item" style="padding-top: 20px; padding-bottom: 5px;">
 
                         @if ($comment->user->avatar != 'default.jpg')
