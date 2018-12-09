@@ -45,7 +45,26 @@ class PostsController extends Controller
     }
     public function mypost(Post $post){
 
-      $posts = Post::where('user_id','=',Auth::user()->id)->paginate(5);
+        $postsQuery  = Post::where('user_id','=',Auth::user()->id);
+
+        $option = request()->input('sort3');
+        if(request()->has('sort3')){
+            if($option == 1)
+                $posts = $postsQuery->orderBy('created_at', 'desc')->paginate(5);
+            elseif($option == 2)
+                $posts = $postsQuery->orderBy('created_at', 'asc')->paginate(5);
+            elseif($option == 3)
+                $posts = $postsQuery->withCount('likes')->orderBy('likes_count', 'desc')->paginate(5)->appends('sort', request('sort'));
+            elseif($option == 4)
+                $posts = $postsQuery->withCount('comments')->orderBy('comments_count', 'desc')->paginate(5)->appends('sort', request('sort'));
+            else
+                $posts = Post::latest()->paginate(5);
+        }else{
+            $posts = Post::where('user_id','=',Auth::user()->id)->paginate(5);
+        }
+
+
+
 
       return view('posts.mypost', compact('posts'));
     }
