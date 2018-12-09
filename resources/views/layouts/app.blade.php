@@ -128,6 +128,13 @@
         var urlLike = '{{ route('toggle_like') }}';
         var urlFollow = '{{ route('toggle_follow') }}';
     </script>
-
+    <script>
+        $(function () {
+            $("#sort2").on("changed.bs.select", function(e, clickedIndex, newValue, oldValue) {
+                var selectedD = $(this).find('option').eq(clickedIndex).text();
+                console.log('selectedD: ' + selectedD + '  newValue: ' + newValue + ' oldValue: ' + oldValue);
+            });
+        });
+    </script>
 </body>
 </html>

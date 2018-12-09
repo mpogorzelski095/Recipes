@@ -2,6 +2,7 @@
 namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Auth;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -39,10 +40,14 @@ class User extends Authenticatable
     public function favoritePosts()
     {
         $postIds = $this->likes()
-            ->where('like', 1)
+            ->where('user_id', Auth::user()->id)
             ->pluck('post_id');
         $favoritePosts = collect(Post::findMany($postIds))->paginate(5);
         return $favoritePosts;
+    }
+
+    public function follow() {
+        return $this->BelongsToMany( 'App\User', 'followers' ,'follower_id', 'user_id');
     }
     function followers()
     {

@@ -75,6 +75,4 @@ class Post extends Model
             ->groupBy('post_id');
     }
 
-
-
 }

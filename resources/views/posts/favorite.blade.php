@@ -49,6 +49,11 @@
             <br>
 
         @endforeach
+
+
+
+
+
         <div class="container" style="display: flex; justify-content: center;">
 
 
@@ -58,3 +63,20 @@
 
 
 @endsection
+
+
+
+
+
+
+
+
+{{--@foreach ($user->follow as $follow)--}}
+
+    {{--@foreach ($follow->posts as $post)--}}
+
+        {{--@include('posts.post')--}}
+
+    {{--@endforeach--}}
+
+{{--@endforeach--}}

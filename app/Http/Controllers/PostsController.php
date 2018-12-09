@@ -52,8 +52,56 @@ class PostsController extends Controller
 
     public function favorite(Post $post){
         $posts = Auth::user()->favoritePosts();
-
         return view('posts.favorite', compact('posts'));
+    }
+    public function followUserPost(){
+//        $user = (Auth::user());
+//        //        return View::make('posts.favorite')->with('user',$user);
+//        return view('posts.followUserPost', compact('user'));
+
+        $id = Auth::id();
+        $postsQuery = Post::whereIn('user_id', function($query) use($id)
+        {
+            $query->select('user_id')
+                ->from('followers')
+                ->where('follower_id', $id);
+        })->orWhere('user_id', $id);
+
+
+        $option = request()->input('sort2');
+        if(request()->has('sort2')){
+            if($option == 1)
+                $posts = $postsQuery->latest()->get();
+            elseif($option == 2)
+                $posts = $postsQuery->oldest()->get();
+            elseif($option == 3)
+                $posts = $postsQuery->withCount('likes')->orderBy('likes_count', 'desc')->paginate(5)->appends('sort', request('sort'));
+            elseif($option == 4)
+                $posts = $postsQuery->withCount('comments')->orderBy('comments_count', 'desc')->paginate(5)->appends('sort', request('sort'));
+            else
+                $posts = $postsQuery->latest()->get();
+        }else{
+            $posts = $postsQuery->latest()->get();;
+        }
+
+
+
+
+
+//        $posts = Post::whereIn('user_id', function($query) use($id)
+//        {
+//            $query->select('user_id')
+//                ->from('followers')
+//                ->where('follower_id', $id);
+//        })->orWhere('user_id', $id)->latest()->get();
+
+
+
+
+
+
+
+        return view('posts.followUserPost', compact('posts'));
     }
 
     public function show(Post $post){

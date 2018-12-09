@@ -58,7 +58,6 @@
 
 
 
-    <a href="/?sort=3"> Like</a>
 
     <form method="post" enctype="multipart/form-data" action="{{ route('sort') }}">
         @csrf
