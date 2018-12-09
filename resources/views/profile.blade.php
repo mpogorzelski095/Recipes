@@ -52,17 +52,11 @@
     </form>
 
 
-
-
-    <button type="submit" class="btn btn-danger" style="float:left; margin-top:15px; margin-right:10px;">Delete</button>
-    <button type="submit" class="btn btn-primary" style="float:left; margin-top:15px;">Edit</button>
-
-
     <form enctype="multipart/form-data" action="/profile" method="POST">
     <label>Update Profile Image</label>
     <input type="file" name="avatar">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-    <input type="submit" class="btn-success">
+    <input type="submit" class="btn btn-success">
     </form>
 
 

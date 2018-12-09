@@ -42,3 +42,5 @@ Route::post('users/toggle_follow', 'UserController@toggleFollow')->name(
 Route::post('posts/toggle_like', 'PostsController@toggleLike')->name(
     'toggle_like'
 );
+Route::post('/', 'PostsController@index')->name('sort');
+

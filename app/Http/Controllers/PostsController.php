@@ -19,29 +19,29 @@ class PostsController extends Controller
     }
 
 
-
-//    public function sort(Request $request){
-//        $this->validate(request(), [
-//            'sort' => 'required',
-//        ]);
-//        $option = $request->input('sort');
-//        dd($option);
-//        if($option == 1)
-//            $posts = Post::latest()->paginate(1);
-//        elseif($option == 2)
-//            $posts = Post::oldest()->paginate(10);
-//        else
-//            $posts = Post::latest()->paginate(5);
-//
-//
-//        return view('posts.index', compact('posts'));
-//    }
-
     public function index(){
-      //$posts = Post::all();
-      $posts = Post::latest()->paginate(5);
+        $option = request()->input('sort');
+        if(request()->has('sort')){
+            if($option == 1)
+                $posts = Post::latest()->paginate(5)->appends('sort', request('sort'));
+            elseif($option == 2)
+                $posts = Post::oldest()->paginate(5)->appends('sort', request('sort'));
+            elseif($option == 3)
+                $posts = Post::withCount('likes')->orderBy('likes_count', 'desc')->paginate(5)->appends('sort', request('sort'));
+            elseif($option == 4)
+                $posts = Post::withCount('comments')->orderBy('comments_count', 'desc')->paginate(5)->appends('sort', request('sort'));
+            else
+                $posts = Post::latest()->paginate(5);
+        }else{
+            $posts = Post::latest()->paginate(5);
+        }
 
-      return view('posts.index', compact('posts'));
+      //$posts = Post::all();
+
+      $like = Post::withCount('likes')->orderBy('likes_count', 'desc')->first();
+      $comment = Post::withCount('comments')->orderBy('comments_count', 'desc')->first();
+      $follow = User::withCount('followers')->orderBy('followers_count', 'desc')->first();
+      return view('posts.index', compact('posts','like', 'comment', 'follow'));
     }
     public function mypost(Post $post){
 
@@ -192,6 +192,4 @@ class PostsController extends Controller
             'currentNumberOfLikes' => $post->likes()->count()
         ]);
     }
-
-
 }
