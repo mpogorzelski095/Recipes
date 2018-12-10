@@ -3,8 +3,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-//Strona główna
-Route::get('/', 'PostsController@index')->name('index');
+
 //Strona główna
 Route::get('/mypost', 'PostsController@mypost')
     ->name('mypost')
@@ -42,10 +41,21 @@ Route::post('users/toggle_follow', 'UserController@toggleFollow')->name(
 Route::post('posts/toggle_like', 'PostsController@toggleLike')->name(
     'toggle_like'
 );
+
+
+//Strona główna
+Route::get('/', 'PostsController@index')->name('index');
 Route::post('/', 'PostsController@index')->name('sort');
-Route::post('/followUserPost', 'PostsController@followUserPost')->name('sort2');
+
+Route::get('/community', 'PostsController@community')->name('community');
+Route::post('/community', 'PostsController@community')->name('sortCommunity');
+
+Route::get('/followUserPost', 'PostsController@followUserPost')->name('followUserPost');
+Route::post('/followUserPost', 'PostsController@followUserPost')->name('sortFollowUserPost');
+
 Route::post('/mypost', 'PostsController@mypost')->name('sort3');
 
 
-Route::get('/followUserPost', 'PostsController@followUserPost')->name('followUserPost');
+
+
 

@@ -17,6 +17,35 @@ class PostsController extends Controller
     public function __construct(){
       $this->middleware('auth')->except(['index']);
     }
+    public function community(){
+        $option = request()->input('sortCommunity');
+        if(request()->has('sortCommunity')){
+            if($option == 1)
+                $posts = Post::latest()->paginate(5)->appends('sortCommunity', request('sortCommunity'));
+            elseif($option == 2)
+                $posts = Post::oldest()->paginate(5)->appends('sortCommunity', request('sortCommunity'));
+            elseif($option == 3)
+                $posts = Post::withCount('likes')->orderBy('likes_count', 'desc')->paginate(5)->appends('sortCommunity', request('sortCommunity'));
+            elseif($option == 4)
+                $posts = Post::withCount('comments')->orderBy('comments_count', 'desc')->paginate(5)->appends('sortCommunity', request('sortCommunity'));
+            else
+                $posts = Post::latest()->paginate(5);
+        }else{
+            $posts = Post::latest()->paginate(5);
+            $option = 1;
+        }
+
+        //$posts = Post::all();
+
+        $like = Post::withCount('likes')->orderBy('likes_count', 'desc')->first();
+        $comment = Post::withCount('comments')->orderBy('comments_count', 'desc')->first();
+        $follow = User::withCount('followers')->orderBy('followers_count', 'desc')->first();
+        return view('posts.community', compact('posts','like', 'comment', 'follow','option'));
+    }
+
+
+
+
 
 
     public function index(){
@@ -34,6 +63,7 @@ class PostsController extends Controller
                 $posts = Post::latest()->paginate(5);
         }else{
             $posts = Post::latest()->paginate(5);
+            $option = 1;
         }
 
       //$posts = Post::all();
@@ -41,7 +71,7 @@ class PostsController extends Controller
       $like = Post::withCount('likes')->orderBy('likes_count', 'desc')->first();
       $comment = Post::withCount('comments')->orderBy('comments_count', 'desc')->first();
       $follow = User::withCount('followers')->orderBy('followers_count', 'desc')->first();
-      return view('posts.index', compact('posts','like', 'comment', 'follow'));
+      return view('posts.index', compact('posts','like', 'comment', 'follow','option'));
     }
     public function mypost(Post $post){
 
@@ -61,12 +91,13 @@ class PostsController extends Controller
                 $posts = Post::latest()->paginate(5);
         }else{
             $posts = Post::where('user_id','=',Auth::user()->id)->paginate(5);
+            $option = 1;
         }
 
 
 
 
-      return view('posts.mypost', compact('posts'));
+      return view('posts.mypost', compact('posts', 'option'));
     }
 
     public function favorite(Post $post){
@@ -77,7 +108,6 @@ class PostsController extends Controller
 //        $user = (Auth::user());
 //        //        return View::make('posts.favorite')->with('user',$user);
 //        return view('posts.followUserPost', compact('user'));
-
         $id = Auth::id();
         $postsQuery = Post::whereIn('user_id', function($query) use($id)
         {
@@ -86,27 +116,23 @@ class PostsController extends Controller
                 ->where('follower_id', $id);
         })->orWhere('user_id', $id);
 
-
-        $option = request()->input('sort2');
-        if(request()->has('sort2')){
+        $option = request()->input('sortFollowUserPost');
+        if(request()->has('sortFollowUserPost')){
             if($option == 1)
-                $posts = $postsQuery->latest()->get();
+                $posts = $postsQuery->latest()->paginate(5);
             elseif($option == 2)
-                $posts = $postsQuery->oldest()->get();
+
+                $posts = $postsQuery->orderBy('created_at', 'asc')->paginate(5)->appends('sortFollowUserPost', request('sortFollowUserPost'));
             elseif($option == 3)
-                $posts = $postsQuery->withCount('likes')->orderBy('likes_count', 'desc')->paginate(5)->appends('sort', request('sort'));
+                $posts = $postsQuery->withCount('likes')->orderBy('likes_count', 'desc')->paginate(5)->appends('sortFollowUserPost', request('sortFollowUserPost'));
             elseif($option == 4)
-                $posts = $postsQuery->withCount('comments')->orderBy('comments_count', 'desc')->paginate(5)->appends('sort', request('sort'));
+                $posts = $postsQuery->withCount('comments')->orderBy('comments_count', 'desc')->paginate(5)->appends('sortFollowUserPost', request('sortFollowUserPost'));
             else
-                $posts = $postsQuery->latest()->get();
+                $posts = $postsQuery->latest()->paginate(5);
         }else{
-            $posts = $postsQuery->latest()->get();;
+            $posts = $postsQuery->latest()->paginate(5);
+            $option = 1;
         }
-
-
-
-
-
 //        $posts = Post::whereIn('user_id', function($query) use($id)
 //        {
 //            $query->select('user_id')
@@ -114,13 +140,7 @@ class PostsController extends Controller
 //                ->where('follower_id', $id);
 //        })->orWhere('user_id', $id)->latest()->get();
 
-
-
-
-
-
-
-        return view('posts.followUserPost', compact('posts'));
+        return view('posts.followUserPost', compact('posts','option'));
     }
 
     public function show(Post $post){
