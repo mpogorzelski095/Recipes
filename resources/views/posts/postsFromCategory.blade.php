@@ -5,55 +5,6 @@
 
 
 
-    <div class="row justify-content-center">
-        <div class="col-sm-4">
-            <div class="card" style="width: 21rem;">
-                <img class="card-img-top" src="{{ $like->getFoodPic() }}" alt="Card image cap" width="300px" height="300px">
-                <div class="card-body">
-                    <h5 class="card-title">Największa ilość lajków :v</h5>
-                    Liczba lajków  <span>{{ $like->likes()->count() }}</span> <br> <br>
-                    <h5 class="card-title">{{ $like->title }}</h5>
-                    <p class="card-text"> {{ str_limit($like->body, $limit = 100, $end = '...') }}  <a href="/posts/{{ $like->id }}">keep riding</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="card" style="width: 21rem;">
-                <img class="card-img-top" src="{{ $comment->getFoodPic() }}" alt="Card image cap" width="300px" height="300px">
-                <div class="card-body">
-                    <h5 class="card-title">Największa ilość komentarzy :v</h5>
-                    Liczba komentarzy  <span>{{ $comment->comments()->count() }}</span> <br> <br>
-                    <h5 class="card-title">{{ $comment->title }}</h5>
-                    <p class="card-text"> {{ str_limit($comment->body, $limit = 100, $end = '...') }}  <a href="/posts/{{ $comment->id }}">keep riding</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="card" style="width: 21rem;">
-                <img class="card-img-top" src="{{ $new->getFoodPic() }}" alt="Card image cap" width="300px" height="300px">
-                <div class="card-body">
-                    <h5 class="card-title">Najnowszy :v</h5>
-                    Liczba komentarzy  <span>{{ $new->comments()->count() }}</span> <br> <br>
-                    <h5 class="card-title">{{ $new->title }}</h5>
-                    <p class="card-text"> {{ str_limit($new->body, $limit = 100, $end = '...') }}  <a href="/posts/{{ $new->id }}">keep riding</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-
-
-
-
-
-
-
-
-
-
 
 
 

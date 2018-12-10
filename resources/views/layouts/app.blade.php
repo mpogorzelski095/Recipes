@@ -25,7 +25,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/followUserPost') }}">
                     <!-- {{ config('app.name', 'Laravel') }} -->
                     <strong>MOJE PRZEPISY</strong>
                 </a>
@@ -47,8 +47,8 @@
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @else
                             <li class="nav-item">
-                                <a id="navbar" href="{{ route('index') }}" class="nav-link"  role="button" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Strona główna <span class="caret"></span>
+                                <a id="navbar" href="{{ route('followUserPost') }}" class="nav-link"  role="button" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Home <span class="caret"></span>
                                 </a>
                             </li>
                             <li class="nav-item">

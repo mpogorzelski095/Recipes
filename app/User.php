@@ -42,7 +42,7 @@ class User extends Authenticatable
         $postIds = $this->likes()
             ->where('user_id', Auth::user()->id)
             ->pluck('post_id');
-        $favoritePosts = collect(Post::findMany($postIds))->paginate(5);
+        $favoritePosts = collect(Post::findMany($postIds));
         return $favoritePosts;
     }
 

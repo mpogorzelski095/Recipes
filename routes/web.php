@@ -4,10 +4,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Strona główna
-Route::get('/mypost', 'PostsController@mypost')
-    ->name('mypost')
-    ->name('mypost');
+
 //Profile
 Route::get('/profile', 'UserController@profile')->name('profile');
 Route::post('/profile', 'UserController@update_avatar')->name('profile');
@@ -31,9 +28,7 @@ Route::get('/tags/{tag}', 'TagsController@show');
 Route::post('/like', 'PostsController@postLikePost')->name('like');
 Route::get('/users/{user}', 'UserController@showuser');
 Route::get('/favorite', 'PostsController@favorite')->name('favorite');
-Route::get('/categories', 'CategoriesController@index')->name('categories');
-//każda kategoria po id - w sumie to po nazwie
-Route::get('/categories/{category}', 'CategoriesController@show');
+
 Route::get('/users/{user}', 'UserController@showuser');
 Route::post('users/toggle_follow', 'UserController@toggleFollow')->name(
     'toggle_follow'
@@ -43,19 +38,37 @@ Route::post('posts/toggle_like', 'PostsController@toggleLike')->name(
 );
 
 
-//Strona główna
-Route::get('/', 'PostsController@index')->name('index');
-Route::post('/', 'PostsController@index')->name('sort');
+////Strona główna
+//Route::get('/', 'PostsController@index')->name('index');
+//Route::post('/', 'PostsController@index')->name('sort');
+//
+//Route::get('/followUserPost', 'PostsController@followUserPost')->name('followUserPost');
+//Route::post('/followUserPost', 'PostsController@followUserPost')->name('sortFollowUserPost');
+
 
 Route::get('/community', 'PostsController@community')->name('community');
 Route::post('/community', 'PostsController@community')->name('sortCommunity');
 
+
+
+//Strona główna
+
+
+//Strona główna
+Route::get('/', 'PostsController@index')->name('index');
+Route::post('/', 'PostsController@index')->name('sort');
+
 Route::get('/followUserPost', 'PostsController@followUserPost')->name('followUserPost');
 Route::post('/followUserPost', 'PostsController@followUserPost')->name('sortFollowUserPost');
 
-Route::post('/mypost', 'PostsController@mypost')->name('sort3');
+Route::get('/categories', 'CategoriesController@index')->name('categories');
+//każda kategoria po id - w sumie to po nazwie
+Route::get('/categories/{category}', 'CategoriesController@show')->name('CategoryPost');
 
 
 
+Route::get('/mypost', 'PostsController@mypost')->name('mypost');
+Route::post('/mypost', 'PostsController@mypost')->name('sortMypost');
 
-
+Route::get('/favorite', 'PostsController@favorite')->name('favorite');
+Route::post('/favorite', 'PostsController@favorite')->name('sortFavorite');
