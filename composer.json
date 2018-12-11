@@ -13,6 +13,7 @@
         "laravel/tinker": "^1.0",
         "laravolt/avatar": "^2.1",
         "mbezhanov/faker-provider-collection": "^1.2",
+        "pusher/pusher-php-server": "^3.2",
         "yish/imgur": "^1.0"
     },
     "require-dev": {

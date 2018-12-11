@@ -162,6 +162,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Yish\Imgur\UploadServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
     ],
 
     /*
