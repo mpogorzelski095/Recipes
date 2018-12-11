@@ -1,11 +1,10 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+// require('./bootstrap');
 
 // window.Vue = require('vue');
 //
@@ -21,24 +20,23 @@ require('./bootstrap');
 // //     el: '#app'
 // // });
 
-
-window._ = require('lodash');
-window.$ = window.jQuery = require('jquery');
-require('bootstrap-sass');
-window.Pusher = require('pusher-js');
+window._ = require("lodash");
+window.$ = window.jQuery = require("jquery");
+require("bootstrap");
+window.Pusher = require("pusher-js");
 import Echo from "laravel-echo";
 
 const PUSHER_KEY = process.env.MIX_PUSHER_APP_KEY;
 
 const NOTIFICATION_TYPES = {
-    follow: 'App\\Notifications\\UserFollowed',
-    newPost: 'App\\Notifications\\NewPost'
+    follow: "App\\Notifications\\UserFollowed",
+    newPost: "App\\Notifications\\NewPost"
 };
 
 window.Echo = new Echo({
-    broadcaster: 'pusher',
+    broadcaster: "pusher",
     key: PUSHER_KEY,
-    cluster: 'eu',
+    cluster: "eu",
     encrypted: true
 });
 
@@ -46,17 +44,19 @@ var notifications = [];
 
 $(document).ready(function() {
     // check if there's a logged in user
-    if(Laravel.userId) {
+    if (Laravel.userId) {
         // load notifications from database
-        $.get(`/notifications`, function (data) {
+        $.get(`/notifications`, function(data) {
             addNotifications(data, "#notifications");
         });
 
         // listen to notifications from pusher
-        window.Echo.private(`App.User.${Laravel.userId}`)
-            .notification((notification) => {
-                addNotifications([notification], '#notifications');
-            });
+        window.Echo.private(`App.User.${Laravel.userId}`).notification(
+            notification => {
+                addNotifications([notification], "#notifications");
+                console.log(notifications, notification, Laravel.userId);
+            }
+        );
     }
 });
 
@@ -70,15 +70,17 @@ function addNotifications(newNotifications, target) {
 
 // show notifications
 function showNotifications(notifications, target) {
-    if(notifications.length) {
-        var htmlElements = notifications.map(function (notification) {
+    if (notifications.length) {
+        var htmlElements = notifications.map(function(notification) {
             return makeNotification(notification);
         });
-        $(target + 'Menu').html(htmlElements.join(''));
-        $(target).addClass('has-notifications')
+        $(target + "Menu").html(htmlElements.join(""));
+        $(target).addClass("has-notifications");
     } else {
-        $(target + 'Menu').html('<li class="dropdown-header">No notifications</li>');
-        $(target).removeClass('has-notifications');
+        $(target + "Menu").html(
+            '<li class="dropdown-header">No notifications</li>'
+        );
+        $(target).removeClass("has-notifications");
     }
 }
 
@@ -92,22 +94,22 @@ function makeNotification(notification) {
 // get the notification route based on it's type
 function routeNotification(notification) {
     var to = `?read=${notification.id}`;
-    if(notification.type === NOTIFICATION_TYPES.follow) {
-        to = 'users' + to;
-    } else if(notification.type === NOTIFICATION_TYPES.newPost) {
+    if (notification.type === NOTIFICATION_TYPES.follow) {
+        to = "users" + to;
+    } else if (notification.type === NOTIFICATION_TYPES.newPost) {
         const postId = notification.data.post_id;
         to = `posts/${postId}` + to;
     }
-    return '/' + to;
+    return "/" + to;
 }
 
 // get the notification text based on it's type
 function makeNotificationText(notification) {
-    var text = '';
-    if(notification.type === NOTIFICATION_TYPES.follow) {
+    var text = "";
+    if (notification.type === NOTIFICATION_TYPES.follow) {
         const name = notification.data.follower_name;
         text += `<strong>${name}</strong> followed you`;
-    } else if(notification.type === NOTIFICATION_TYPES.newPost) {
+    } else if (notification.type === NOTIFICATION_TYPES.newPost) {
         const name = notification.data.following_name;
         text += `<strong>${name}</strong> published a post`;
     }
