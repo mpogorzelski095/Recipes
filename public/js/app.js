@@ -44283,7 +44283,7 @@ __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap
 
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 
-var PUSHER_KEY = "789a986cb766f4e9dcd4";
+var PUSHER_KEY = "8ec9e469d2f8b035286a";
 var NOTIFICATION_TYPES = {
   follow: "App\\Notifications\\UserFollowed",
   newPost: "App\\Notifications\\NewPost"
@@ -44387,8 +44387,8 @@ function makeNotificationText(notification) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/piotr/_prog/_laravel_projects/Recipes/resources/assets/js/app.js */"./resources/assets/js/app.js");
-module.exports = __webpack_require__(/*! /home/piotr/_prog/_laravel_projects/Recipes/resources/assets/sass/app.scss */"./resources/assets/sass/app.scss");
+__webpack_require__(/*! C:\Users\Maciej\Recipes\resources\assets\js\app.js */"./resources/assets/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Maciej\Recipes\resources\assets\sass\app.scss */"./resources/assets/sass/app.scss");
 
 
 /***/ })
