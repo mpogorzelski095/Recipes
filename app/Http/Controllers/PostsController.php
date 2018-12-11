@@ -135,7 +135,7 @@ class PostsController extends Controller
             $query->select('follows_id')
                 ->from('followers')
                 ->where('user_id', $id);
-        })->orWhere('user_id', $id);
+        });
 
 
 
