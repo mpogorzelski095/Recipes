@@ -74,7 +74,7 @@
                         @endif
 
 
-                        <strong style="padding-left: 5px;">                        <a href="/users/{{ $post->user->id }}">
+                        <strong style="padding-left: 5px;">                        <a href="/users/{{ $comment->user->id }}">
                                 {{ $comment->user->name }}
                             </a> {{ $comment->created_at->diffForHumans() }}</strong>:<br>
                         <p style="padding-left: 40px;">{{ $comment->body }}</p>

@@ -23,7 +23,8 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
+        {{--<nav class="navbar navbar-expand-md navbar-light navbar-laravel">--}}
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/followUserPost') }}">
                     <!-- {{ config('app.name', 'Laravel') }} -->
@@ -106,7 +107,7 @@
                 </div>
             </div>
         </nav>
-        <div class="container" style="margin-top:50px;">
+        <div class="container" style="margin-top:100px;">
             {{--display: flex; justify-content: center;--}}
 
 
