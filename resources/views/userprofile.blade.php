@@ -73,10 +73,31 @@
 
 
 
-                        @php $follows = $user->followers()->where('follower_id', auth()->id())->first() @endphp
-                        <a href="#" id="follow-btn" class="btn {{$follows ? 'btn-danger' : 'btn-success'}}" role="button" data-userid="{{$user->id}}">{{$follows ? 'Unfollow' : 'Follow'}}</a>
-                        <br><br>
+                        @if (auth()->user()->isFollowing($user->id))
+                            <td>
+                                <form action="{{route('unfollow', ['id' => $user->id])}}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+
+                                    <button type="submit" id="delete-follow-{{ $user->id }}" class="btn btn-danger">
+                                        <i class="fa fa-btn fa-trash"></i>Unfollow
+                                    </button>
+                                </form>
+                            </td>
+                        @else
+                            <td>
+                                <form action="{{route('follow', ['id' => $user->id])}}" method="POST">
+                                    {{ csrf_field() }}
+
+                                    <button type="submit" id="follow-user-{{ $user->id }}" class="btn btn-success">
+                                        <i class="fa fa-btn fa-user"></i>Follow
+                                    </button>
+                                </form>
+                            </td>
+                        @endif
                         Liczba followersów <span id="followers-count">{{ $followers->count() }}</span> <br> <br>
+
+
 
 
 

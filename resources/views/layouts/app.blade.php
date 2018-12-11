@@ -19,6 +19,25 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <!-- Scripts -->
+    <script>
+        window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
+
+    <!-- This makes the current user's id available in javascript -->
+    @if(!auth()->guest())
+        <script>
+            window.Laravel.userId = <?php echo auth()->user()->id; ?>
+        </script>
+    @endif
+
+
+
+
 
 </head>
 <body>
@@ -47,6 +66,14 @@
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @else
+                            {{--<li class="dropdown">--}}
+                                {{--<a class="dropdown-toggle" id="notifications" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">--}}
+                                    {{--<span class="glyphicon glyphicon-user"></span>--}}
+                                {{--</a>--}}
+                                {{--<ul class="dropdown-menu" aria-labelledby="notificationsMenu" id="notificationsMenu">--}}
+                                    {{--<li class="dropdown-header">No notifications</li>--}}
+                                {{--</ul>--}}
+                            {{--</li>--}}
                             <li class="nav-item">
                                 <a id="navbar" href="{{ route('followUserPost') }}" class="nav-link"  role="button" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Home <span class="caret"></span>
@@ -71,6 +98,15 @@
                                 <a id="navbar" class="nav-link" href="{{ url('/mypost') }}" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Moje przepisy <span class="caret"></span>
                                 </a>
+                            </li>
+                            <!-- notifications dropdown -->
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" id="notifications" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <span style="font-size: 20px; padding-top: 10px;" class="fas fa-bell"></span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="notificationsMenu" id="notificationsMenu">
+                                    <li class="dropdown-header">No notifications</li>
+                                </ul>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="position: relative; padding-left: 50px;">

@@ -26,16 +26,11 @@ Route::get('/tags', 'TagsController@index')->name('tags');
 //każda kategoria po id - w sumie to po nazwie
 Route::get('/tags/{tag}', 'TagsController@show');
 Route::post('/like', 'PostsController@postLikePost')->name('like');
-Route::get('/users/{user}', 'UserController@showuser');
-Route::get('/favorite', 'PostsController@favorite')->name('favorite');
 
+Route::get('/favorite', 'PostsController@favorite')->name('favorite');
 Route::get('/users/{user}', 'UserController@showuser');
-Route::post('users/toggle_follow', 'UserController@toggleFollow')->name(
-    'toggle_follow'
-);
-Route::post('posts/toggle_like', 'PostsController@toggleLike')->name(
-    'toggle_like'
-);
+Route::get('/users/{user}', 'UserController@showuser');
+
 
 
 ////Strona główna
@@ -72,3 +67,25 @@ Route::post('/mypost', 'PostsController@mypost')->name('sortMypost');
 
 Route::get('/favorite', 'PostsController@favorite')->name('favorite');
 Route::post('/favorite', 'PostsController@favorite')->name('sortFavorite');
+
+
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('users', 'UserController@index')->name('users');
+    Route::post('users/{user}/follow', 'UserController@follow')->name('follow');
+    Route::delete('users/{user}/unfollow', 'UserController@unfollow')->name('unfollow');
+});
+
+
+Route::group([ 'middleware' => 'auth' ], function () {
+    // ...
+    Route::get('/notifications', 'UserController@notifications');
+});
+
+
+Route::post('users/toggle_follow', 'UserController@toggleFollow')->name(
+    'toggle_follow'
+);
+Route::post('posts/toggle_like', 'PostsController@toggleLike')->name(
+    'toggle_like'
+);

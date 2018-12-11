@@ -46,28 +46,62 @@ class User extends Authenticatable
         return $favoritePosts;
     }
 
-    public function follow() {
-        return $this->BelongsToMany( 'App\User', 'followers' ,'follower_id', 'user_id');
-    }
-    function followers()
+//    public function follow() {
+//        return $this->BelongsToMany( 'App\User', 'followers' ,'follower_id', 'user_id');
+//    }
+//    function followers()
+//    {
+//        return $this->belongsToMany(
+//            'App\User',
+//            'followers',
+//            'user_id',
+//            'follower_id'
+//        )->withTimestamps();
+//    }
+
+
+    public function followers()
     {
-        return $this->belongsToMany(
-            'App\User',
-            'followers',
-            'user_id',
-            'follower_id'
-        )->withTimestamps();
+        return $this->belongsToMany(self::class, 'followers', 'follows_id', 'user_id')
+            ->withTimestamps();
     }
 
-    public function toggleFollow($followerId)
+    public function follows()
     {
-        $alreadyFollows = $this->followers()
-            ->where('follower_id', $followerId)
-            ->first();
-        if ($alreadyFollows) {
-            $this->followers()->detach($followerId);
-        } else {
-            $this->followers()->attach($followerId);
-        }
+        return $this->belongsToMany(self::class, 'followers', 'user_id', 'follows_id')
+            ->withTimestamps();
     }
+    public function follow($userId)
+    {
+        $this->follows()->attach($userId);
+        return $this;
+    }
+
+    public function unfollow($userId)
+    {
+        $this->follows()->detach($userId);
+        return $this;
+    }
+
+    public function isFollowing($userId)
+    {
+        return (boolean) $this->follows()->where('follows_id', $userId)->first(["users.id"]);
+    }
+
+
+
+
+
+
+//    public function toggleFollow($followerId)
+//    {
+//        $alreadyFollows = $this->followers()
+//            ->where('follower_id', $followerId)
+//            ->first();
+//        if ($alreadyFollows) {
+//            $this->followers()->detach($followerId);
+//        } else {
+//            $this->followers()->attach($followerId);
+//        }
+//    }
 }

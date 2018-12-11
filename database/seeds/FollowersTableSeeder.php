@@ -11,11 +11,11 @@ class FollowersTableSeeder extends Seeder
      */
     public function run()
     {
-        foreach (range(1,1000) as $index) {
-            DB::table('followers')->insert([
-                'user_id' => User::all()->random()->id,
-                'follower_id' => User::all()->random()->id,
-            ]);
-        }
+//        foreach (range(1,1000) as $index) {
+//            DB::table('followers')->insert([
+//                'user_id' => User::all()->random()->id,
+//                'follower_id' => User::all()->random()->id,
+//            ]);
+//        }
     }
 }

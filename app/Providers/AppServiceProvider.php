@@ -8,6 +8,8 @@ use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use App\Observers\PostObserver;
+use App\Post;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(UrlGenerator $url)
     {
+        Post::observe(PostObserver::class);
+
         Schema::defaultStringLength(191);
 //        Carbon::setLocale(env('LOCALE', 'pl'));
 
