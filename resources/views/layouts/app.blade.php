@@ -39,7 +39,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         {{--<nav class="navbar navbar-expand-md navbar-light navbar-laravel">--}}
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/followUserPost') }}">
@@ -112,7 +112,7 @@
                                     @if (Auth::user()->avatar != 'default.jpg')
                                         <img src="{{ Auth::user()->getUsersAvatar() }}" style="width: 32px; height: 32px; position:absolute; top:5px; left:10px; border-radius: 50%;">
                                     @else
-                                        <div style="position:absolute; top:5px; left:10px; border-radius: 50%;">{!! Avatar::create(Auth::user()->name)->setDimension(32, 32)->setFontSize(12)->toSvg(); !!}</div>
+                                        <div style="position:absolute; top:5px; left:10px; border-radius: 50%;">{!! Avatar::create(Auth::user()->name)->setShape('circle')->setDimension(32, 32)->setFontSize(12)->toSvg(); !!}</div>
                                     @endif
 
                                     {{ Auth::user()->name }} <span class="caret"></span>

@@ -29,3 +29,31 @@
 #notifications.has-notifications {
     color: #bf5329
 }
+
+.food {
+    object-fit: cover;
+    height:300px;
+}
+
+#food .card-body{
+    height: 120px;
+}
+//@media screen and (max-width: 500px) {
+//    #food{
+//        display: none !important;
+//    }
+//}
+#foodCard{
+    width: 22rem;
+    transition: transform 0.2s ease-in-out;
+}
+#foodCard:hover{
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#foodPic{
+    object-fit: cover;
+    height:300px;
+    float: left;
+}

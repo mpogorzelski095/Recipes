@@ -14,7 +14,10 @@
         {{ $post->created_at->toDayDateTimeString() }}
     </p>
     <p>
-        <img src="{{ $post->getFoodPic() }}" style="width: 150px; height: 150px; float: left; border-radius: 50%;">
+
+        <img class="rounded" src="{{ $post->getFoodPic() }}" id="foodPic">
+
+
 
         {{--{{ str_limit($post->user->name, $limit = 2, $end = '...') }} keep ridingS--}}
 
@@ -31,12 +34,18 @@
         @if (Auth::user() != false)
 
             @php $likes = $post->likes()->where('user_id', auth()->id())->first() @endphp
-            <a href="#" class="btn {{$likes ? 'btn-danger' : 'btn-success'}} like-btn" role="button" data-postid="{{$post->id}}">{{$likes ? 'DisLike' : 'Like'}}</a>
+            <a href="#" class="btn {{$likes ? 'btn-danger' : 'btn-success'}} like-btn" role="button" data-postid="{{$post->id}}">{{$likes ? "DisLike" : 'Like'}}</a>
             <br><br>
             Liczba lajków  <span id="likes-count-{{$post->id}}">{{ $post->likes()->count() }}</span> <br> <br>
             Liczba komentarzy  <span>{{ $post->comments()->count() }}</span> <br> <br>
         @else
 
         @endif
+
+
+
+
+
+
     </div>
 </div>

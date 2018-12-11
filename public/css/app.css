@@ -9563,3 +9563,33 @@ a.text-dark:focus {
   color: #bf5329;
 }
 
+.food {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 300px;
+}
+
+#food .card-body {
+  height: 120px;
+}
+
+#foodCard {
+  width: 22rem;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+
+#foodCard:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#foodPic {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 300px;
+  float: left;
+}
+
