@@ -105,17 +105,17 @@ class PostsController extends Controller
         $option = request()->input('sortMypost');
         if (request()->has('sortMypost')) {
             if ($option == 1)
-                $posts = Post::where('user_id', '=', Auth::user()->id)->latest()->paginate(5)->appends('sortMypost', request('sortMypost'));
+                $posts = Post::where('user_id', '=', Auth::user()->id)->latest()->simplePaginate(5)->appends('sortMypost', request('sortMypost'));
             elseif ($option == 2)
-                $posts = Post::where('user_id', '=', Auth::user()->id)->oldest()->paginate(5)->appends('sortMypost', request('sortMypost'));
+                $posts = Post::where('user_id', '=', Auth::user()->id)->oldest()->simplePaginate(5)->appends('sortMypost', request('sortMypost'));
             elseif ($option == 3)
-                $posts = Post::where('user_id', '=', Auth::user()->id)->withCount('likes')->orderBy('likes_count', 'desc')->paginate(5)->appends('sortMypost', request('sortMypost'));
+                $posts = Post::where('user_id', '=', Auth::user()->id)->withCount('likes')->orderBy('likes_count', 'desc')->simplePaginate(5)->appends('sortMypost', request('sortMypost'));
             elseif ($option == 4)
-                $posts = Post::where('user_id', '=', Auth::user()->id)->withCount('comments')->orderBy('comments_count', 'desc')->paginate(5)->appends('sortMypost', request('sortMypost'));
+                $posts = Post::where('user_id', '=', Auth::user()->id)->withCount('comments')->orderBy('comments_count', 'desc')->simplePaginate(5)->appends('sortMypost', request('sortMypost'));
             else
-                $posts = Post::where('user_id', '=', Auth::user()->id)->latest()->paginate(5)->appends('sortMypost', request('sortMypost'));
+                $posts = Post::where('user_id', '=', Auth::user()->id)->latest()->simplePaginate(5)->appends('sortMypost', request('sortMypost'));
         } else {
-            $posts = Post::where('user_id', '=', Auth::user()->id)->latest()->paginate(5)->appends('sortMypost', request('sortMypost'));
+            $posts = Post::where('user_id', '=', Auth::user()->id)->latest()->simplePaginate(5)->appends('sortMypost', request('sortMypost'));
             $option = 1;
         }
 
