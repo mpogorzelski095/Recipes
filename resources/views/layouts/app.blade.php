@@ -140,7 +140,7 @@
                 </div>
             </div>
         </nav>
-        <div class="container" style="margin-top:100px;">
+        <div class="container" id="main-container">
             {{--display: flex; justify-content: center;--}}
 
 
@@ -149,13 +149,9 @@
                         {{--{{ $flash }}--}}
                     {{--</div>--}}
                 {{--@endif--}}
-
                 @yield('content')
-
         </div>
-
     </div>
-
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

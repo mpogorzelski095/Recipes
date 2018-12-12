@@ -9574,7 +9574,8 @@ a.text-dark:focus {
 }
 
 #foodCard {
-  width: 22rem;
+  margin-top: 20px;
+  width: 100%;
   transition: -webkit-transform 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
@@ -9587,9 +9588,20 @@ a.text-dark:focus {
 }
 
 #foodPic {
+  margin-right: 20px;
   -o-object-fit: cover;
      object-fit: cover;
-  height: 300px;
+  height: 290px;
+  width: 100%;
   float: left;
+  margin-top: 5px;
+}
+
+.body {
+  text-align: justify;
+}
+
+#main-container {
+  margin-top: 70px;
 }
 

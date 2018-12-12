@@ -59,7 +59,7 @@ class PostsController extends Controller
             else
                 $posts = Post::latest()->paginate(5);
         } else {
-            $posts = Post::latest()->paginate(5);
+            $posts = Post::latest()->simplePaginate(5);
             $option = 1;
         }
 

@@ -5,13 +5,13 @@
 
 
 
-    <div class="row justify-content-center" id="food">
-        <div class="col-md-6 col-lg-4">
+    <div class="row" id="food">
+        <div class="col-sm-6 col-md-12 col-lg-4">
             <a href="/posts/{{ $like->id }}">
                 <div id="foodCard" class="card">
-                    <img class="food" src="{{ $like->getFoodPic() }}" alt="Card image cap">
+                    <img class="img-fluid food" src="{{ $like->getFoodPic() }}" alt="Card image cap">
                     <div class="card-body">
-                        <h5 style="font-weight: bold;" class="card-title">The largest number of likes: &nbsp;<span
+                        <h5 style="font-weight: bold;" class="card-title">The most-liked recipe: &nbsp;<span
                                 style="font-size: 17px;"
                                 class="badge badge-success">{{ $like->likes()->count() }}</span>
                         </h5>
@@ -20,10 +20,11 @@
                 </div>
             </a>
         </div>
-        <div class="col-md-6 col-lg-4">
+
+        <div class="col-sm-6 col-md-6 col-lg-4">
             <a href="/posts/{{ $comment->id }}">
                 <div id="foodCard" class="card">
-                    <img class="food" src="{{ $comment->getFoodPic() }}" alt="Card image cap">
+                    <img class="img-fluid food" src="{{ $comment->getFoodPic() }}" alt="Card image cap">
                     <div class="card-body">
                         <h5 style="font-weight: bold;" class="card-title">The most commented recipe: &nbsp;<span
                                 style="font-size: 17px;"
@@ -36,16 +37,12 @@
 
         {{--<p class="card-text"> {{ str_limit($comment->body, $limit = 100, $end = '...') }}  <a href="/posts/{{ $comment->id }}">keep riding</p>--}}
 
-        <div class="col-md-6 col-lg-4">
+        <div class="col-sm-6 col-md-6 col-lg-4">
             <a href="/users/{{ $follow->id }}">
                 <div id="foodCard" class="card">
-                    @if ($follow->avatar != 'default.jpg')
-                        <img class="card-img-top" src="{{ $follow->getUsersAvatar() }}" alt="Card image cap"
-                             width="300px"
-                             height="300px">
-                    @else
-                        {!! Avatar::create($follow->name)->setShape('square')->setDimension(350, 300)->setfontSize(150)->toSvg(); !!}
-                    @endif
+
+                        <img class="img-fluid food" src="{{ $follow->getUsersAvatar() }}" alt="Card image cap">
+
                     <div class="card-body">
                         <h5 style="font-weight: bold;" class="card-title">The most followed user: &nbsp;<span
                                 style="font-size: 17px;"
@@ -60,8 +57,8 @@
     <br>
 
 
-    <div class="row justify-content-center">
-        <div class="col-sm-6">
+    <div class="row">
+        <div class="col-sm-4">
             <form method="post" enctype="multipart/form-data" action="{{ route('sortCommunity') }}">
                 @csrf
                 <div class="input-group mb-3">
@@ -105,10 +102,8 @@
         </div>
     </div>
 
-    <div class="row justify-content-center">
-        <div class="col-sm-4">
+    <div class="d-flex justify-content-end">
             {{ $posts->links() }}
-        </div>
     </div>
 
 @endsection
