@@ -40,11 +40,9 @@
         <div class="col-sm-6 col-md-6 col-lg-4">
             <a href="/users/{{ $follow->id }}">
                 <div id="foodCard" class="card">
-                    @if ($follow->avatar != 'default.jpg')
-                        <img class="img-fluid food" src="{{ $follow->getUsersAvatar() }}" alt="Card image cap">
-                    @else
-                        {!! Avatar::create($follow->name)->setShape('square')->setDimension(350, 300)->setfontSize(150)->toSvg(); !!}
-                    @endif
+
+                    <img class="img-fluid food" src="{{ $follow->getUsersAvatar() }}" alt="Card image cap">
+
                     <div class="card-body">
                         <h5 style="font-weight: bold;" class="card-title">The most followed user: &nbsp;<span
                                 style="font-size: 17px;"
