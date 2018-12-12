@@ -49,15 +49,15 @@ class PostsController extends Controller
         $option = request()->input('sortCommunity');
         if (request()->has('sortCommunity')) {
             if ($option == 1)
-                $posts = Post::latest()->paginate(5)->appends('sortCommunity', request('sortCommunity'));
+                $posts = Post::latest()->simplePaginate(5)->appends('sortCommunity', request('sortCommunity'));
             elseif ($option == 2)
-                $posts = Post::oldest()->paginate(5)->appends('sortCommunity', request('sortCommunity'));
+                $posts = Post::oldest()->simplePaginate(5)->appends('sortCommunity', request('sortCommunity'));
             elseif ($option == 3)
-                $posts = Post::withCount('likes')->orderBy('likes_count', 'desc')->paginate(5)->appends('sortCommunity', request('sortCommunity'));
+                $posts = Post::withCount('likes')->orderBy('likes_count', 'desc')->simplePaginate(5)->appends('sortCommunity', request('sortCommunity'));
             elseif ($option == 4)
-                $posts = Post::withCount('comments')->orderBy('comments_count', 'desc')->paginate(5)->appends('sortCommunity', request('sortCommunity'));
+                $posts = Post::withCount('comments')->orderBy('comments_count', 'desc')->simplePaginate(5)->appends('sortCommunity', request('sortCommunity'));
             else
-                $posts = Post::latest()->paginate(5);
+                $posts = Post::latest()->simplePaginate(5);
         } else {
             $posts = Post::latest()->simplePaginate(5);
             $option = 1;
