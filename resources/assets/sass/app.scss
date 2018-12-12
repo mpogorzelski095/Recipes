@@ -1,16 +1,13 @@
-
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
 // Variables
 @import "variables";
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
 .navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 #flash-message {
@@ -22,8 +19,13 @@
 }
 
 @keyframes flash-message {
-    0%   {opacity: 1;}
-    100% {opacity: 0; display:none;}
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
 }
 
 #notifications.has-notifications {
@@ -32,44 +34,88 @@
 
 .food {
     object-fit: cover;
-    height:300px;
-
+    height: 300px;
 }
 
-#food .card-body{
+#food .card-body {
     height: 120px;
-
+    color: #000;
 }
+
 //@media screen and (max-width: 500px) {
 //    #food{
 //        display: none !important;
 //    }
 //}
-#foodCard{
+
+
+#foodCard {
     margin-top: 20px;
     width: 100%;
     transition: transform 0.2s ease-in-out;
 }
-#foodCard:hover{
+
+#foodCard:hover {
     transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+#foodCard:link {
+    text-decoration: none;
+}
+#categoryCard {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    transition: transform 0.2s ease-in-out;
 }
 
-#foodPic{
+#categoryCard:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.category {
+    object-fit: cover;
+    height: 250px;
+}
+
+#category .card-body {
+
+
+}
+
+
+#foodPic {
     margin-right: 20px;
     object-fit: cover;
-    height:290px;
+    height: 290px;
     width: 100%;
     //width: 290px;
     float: left;
     margin-top: 5px;
 }
 
-.body{
+.body {
     text-align: justify;
 }
 
-#main-container{
+#main-container {
     margin-top: 70px;
 }
+
+#LikeBtn {
+    right: 15px;
+    bottom: 0;
+    position: absolute;
+}
+.navbar-nav > .active > a {
+    font-weight: bold;
+
+}
+//.navbar-nav .nav-item .nav-link:hover {
+//    font-weight: bold;
+//    font-size: 1.1em;
+//}
+
+
 

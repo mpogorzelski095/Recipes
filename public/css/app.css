@@ -9571,6 +9571,7 @@ a.text-dark:focus {
 
 #food .card-body {
   height: 120px;
+  color: #000;
 }
 
 #foodCard {
@@ -9585,6 +9586,31 @@ a.text-dark:focus {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#foodCard:link {
+  text-decoration: none;
+}
+
+#categoryCard {
+  text-align: center;
+  margin-top: 20px;
+  width: 100%;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+
+#categoryCard:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.category {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 250px;
 }
 
 #foodPic {
@@ -9603,5 +9629,15 @@ a.text-dark:focus {
 
 #main-container {
   margin-top: 70px;
+}
+
+#LikeBtn {
+  right: 15px;
+  bottom: 0;
+  position: absolute;
+}
+
+.navbar-nav > .active > a {
+  font-weight: bold;
 }
 

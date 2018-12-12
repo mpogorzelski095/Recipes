@@ -1,10 +1,5 @@
 @extends('layouts.app')
-
-
 @section ('content')
-
-
-
     <div class="row" id="food">
         <div class="col-sm-6 col-md-12 col-lg-4">
             <a href="/posts/{{ $like->id }}">
@@ -36,29 +31,25 @@
         </div>
 
         {{--<p class="card-text"> {{ str_limit($comment->body, $limit = 100, $end = '...') }}  <a href="/posts/{{ $comment->id }}">keep riding</p>--}}
-
         <div class="col-sm-6 col-md-6 col-lg-4">
             <a href="/users/{{ $follow->id }}">
                 <div id="foodCard" class="card">
 
-                        <img class="img-fluid food" src="{{ $follow->getUsersAvatar() }}" alt="Card image cap">
+                    <img class="img-fluid food" src="{{ $follow->getUsersAvatar() }}" alt="Card image cap">
 
                     <div class="card-body">
                         <h5 style="font-weight: bold;" class="card-title">The most followed user: &nbsp;<span
                                 style="font-size: 17px;"
-                                class="badge badge-success">{{ $follow->followers()->count() }}</span></h5>
+                                class="badge badge-primary">{{ $follow->followers()->count() }}</span></h5>
                         <h5 class="card-title">{{ $follow->name }}</h5>
                     </div>
                 </div>
             </a>
         </div>
-
     </div>
     <br>
-
-
-    <div class="row">
-        <div class="col-sm-4">
+    <div class="row justify-content-center">
+        <div class="col-sm-10">
             <form method="post" enctype="multipart/form-data" action="{{ route('sortCommunity') }}">
                 @csrf
                 <div class="input-group mb-3">
@@ -84,15 +75,10 @@
         </div>
     </div>
 
-
-
-
-
-
     <div class="row justify-content-center">
         <div class="col-sm-10">
             @foreach ($posts as $post)
-                <div class="card">
+                <div class="card" id="postsCard">
                     <div class="card-body">
                         @include('posts.post')
                     </div>
@@ -103,7 +89,7 @@
     </div>
 
     <div class="d-flex justify-content-end">
-            {{ $posts->links() }}
+        {{ $posts->links() }}
     </div>
 
 @endsection

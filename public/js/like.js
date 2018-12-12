@@ -13,7 +13,7 @@ $(document).ready(function() {
         })
             .done(function(res) {
                 if (likeButton.innerText === "Like") {
-                    likeButton.innerText = "DisLike";
+                    likeButton.innerText = "Dislike";
                     likeButton.className = "btn btn-danger";
                 } else {
                     likeButton.innerText = "Like";

@@ -89,7 +89,7 @@
                                 <form action="{{route('follow', ['id' => $user->id])}}" method="POST">
                                     {{ csrf_field() }}
 
-                                    <button type="submit" id="follow-user-{{ $user->id }}" class="btn btn-success">
+                                    <button type="submit" id="follow-user-{{ $user->id }}" class="btn btn-primary">
                                         <i class="fa fa-btn fa-user"></i>Follow
                                     </button>
                                 </form>

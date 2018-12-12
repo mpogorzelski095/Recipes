@@ -30,19 +30,23 @@
             {{--@endif--}}
 
 
-            <p><span style="font-weight: bold;" id="likes-count-{{$post->id}}">{{ $post->likes()->count() }}</span>
+            <p style="margin: 0px;"><span style="font-weight: bold;" id="likes-count-{{$post->id}}">{{ $post->likes()->count() }}</span>
                 <span style="font-weight: bold;">likes & </span>
                 <span style="font-weight: bold;">{{ $post->comments()->count() }} comments</span>
-                <span style="float: right;">
-                    @if (Auth::user() != false)
-                        @php $likes = $post->likes()->where('user_id', auth()->id())->first() @endphp
-                        <a href="#" class="btn {{$likes ? 'btn-danger' : 'btn-success'}} like-btn" role="button"
-                           data-postid="{{$post->id}}">{{$likes ? "DisLike" : 'Like'}}</a>
-                    @else
-
-                    @endif
-        </span></p>
             </p>
+
+
+
+
+        </div>
+        <div id="LikeBtn" class="d-flex justify-content-end">
+            @if (Auth::user() != false)
+                @php $likes = $post->likes()->where('user_id', auth()->id())->first() @endphp
+                <a href="#" class="btn {{$likes ? 'btn-danger' : 'btn-success'}} like-btn" role="button"
+                   data-postid="{{$post->id}}">{{$likes ? "Dislike" : 'Like'}}</a>
+            @else
+
+            @endif
         </div>
     </div>
 </div>

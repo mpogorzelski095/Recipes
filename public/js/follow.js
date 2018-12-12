@@ -16,7 +16,7 @@ $(document).ready(function() {
                     followButton.className = "btn btn-danger";
                 } else {
                     followButton.innerText = "Follow";
-                    followButton.className = "btn btn-success";
+                    followButton.className = "btn btn-primary";
                 }
                 followersCount.innerText = res.currentNumberOfFollowers;
             })

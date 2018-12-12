@@ -92,7 +92,7 @@
     <div class="row justify-content-center">
         <div class="col-sm-10">
             @foreach ($posts as $post)
-                <div class="card">
+                <div class="card" id="postsCard">
                     <div class="card-body">
                         @include('posts.post')
                     </div>

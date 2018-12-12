@@ -24,17 +24,17 @@ class PostsController extends Controller
         $option = request()->input('sort');
         if (request()->has('sort')) {
             if ($option == 1)
-                $posts = Post::latest()->paginate(5)->appends('sort', request('sort'));
+                $posts = Post::latest()->simplePaginate(5)->appends('sort', request('sort'));
             elseif ($option == 2)
-                $posts = Post::oldest()->paginate(5)->appends('sort', request('sort'));
+                $posts = Post::oldest()->simplePaginate(5)->appends('sort', request('sort'));
             elseif ($option == 3)
-                $posts = Post::withCount('likes')->orderBy('likes_count', 'desc')->paginate(5)->appends('sort', request('sort'));
+                $posts = Post::withCount('likes')->orderBy('likes_count', 'desc')->simplePaginate(5)->appends('sort', request('sort'));
             elseif ($option == 4)
-                $posts = Post::withCount('comments')->orderBy('comments_count', 'desc')->paginate(5)->appends('sort', request('sort'));
+                $posts = Post::withCount('comments')->orderBy('comments_count', 'desc')->simplePaginate(5)->appends('sort', request('sort'));
             else
-                $posts = Post::latest()->paginate(5);
+                $posts = Post::latest()->simplePaginate(5);
         } else {
-            $posts = Post::latest()->paginate(5);
+            $posts = Post::latest()->simplePaginate(5);
             $option = 1;
         }
         //$posts = Post::all();
@@ -143,17 +143,17 @@ class PostsController extends Controller
         $option = request()->input('sortFollowUserPost');
         if (request()->has('sortFollowUserPost')) {
             if ($option == 1)
-                $posts = $postsQuery->latest()->paginate(5);
+                $posts = $postsQuery->latest()->simplePaginate(5);
             elseif ($option == 2)
-                $posts = $postsQuery->orderBy('created_at', 'asc')->paginate(5)->appends('sortFollowUserPost', request('sortFollowUserPost'));
+                $posts = $postsQuery->orderBy('created_at', 'asc')->simplePaginate(5)->appends('sortFollowUserPost', request('sortFollowUserPost'));
             elseif ($option == 3)
-                $posts = $postsQuery->withCount('likes')->orderBy('likes_count', 'desc')->paginate(5)->appends('sortFollowUserPost', request('sortFollowUserPost'));
+                $posts = $postsQuery->withCount('likes')->orderBy('likes_count', 'desc')->simplePaginate(5)->appends('sortFollowUserPost', request('sortFollowUserPost'));
             elseif ($option == 4)
-                $posts = $postsQuery->withCount('comments')->orderBy('comments_count', 'desc')->paginate(5)->appends('sortFollowUserPost', request('sortFollowUserPost'));
+                $posts = $postsQuery->withCount('comments')->orderBy('comments_count', 'desc')->simplePaginate(5)->appends('sortFollowUserPost', request('sortFollowUserPost'));
             else
-                $posts = $postsQuery->latest()->paginate(5);
+                $posts = $postsQuery->latest()->simplePaginate(5);
         } else {
-            $posts = $postsQuery->latest()->paginate(5);
+            $posts = $postsQuery->latest()->simplePaginate(5);
             $option = 1;
         }
 

@@ -29,73 +29,56 @@
 
 {{--</div>--}}
 {{--</div>--}}
-
-
 @extends('layouts.app')
-
-
 @section ('content')
-
-
-    <form method="post" enctype="multipart/form-data" action="{{ route('sortFollowUserPost') }}">
-        @csrf
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Sort by</label>
-            </div>
-            <select name="sortFollowUserPost" class="custom-select" id="inputGroupSelect01">
-                <option href="/?sortFollowUserPost=1" value="1" {{ $option == '1'  ? "selected" : "" }} >Latest</option>
-                <option href="/?sortFollowUserPost=2" value="2" {{ $option == '2'  ? "selected" : "" }} >Oldest</option>
-                <option href="/?sortFollowUserPost=3" value="3" {{ $option == '3'  ? "selected" : "" }} >Like</option>
-                <option href="/?sortFollowUserPost=4" value="4" {{ $option == '4'  ? "selected" : "" }} >Comments</option>
-            </select>
-        </div>
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </form>
-
-
-
-
-    @if($posts->count() == 0)
-        nie śledzisz nikogo śledziu
-    @else
-        <div class="col-sm-8 blog-main">
-
-            <div class="row justify-content-center">
-                <div class="col-sm-8">
-                    @foreach ($posts as $post)
-                        <div class="card">
-                            <div class="card-body">
-                                @include('posts.post')
-                            </div>
-                        </div>
-                        <br>
-                    @endforeach
+    <div class="row justify-content-center">
+        <div class="col-sm-10">
+            <form method="post" enctype="multipart/form-data" action="{{ route('sortFollowUserPost') }}">
+                @csrf
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Sort by</label>
+                    </div>
+                    <select name="sortFollowUserPost" class="custom-select" id="inputGroupSelect01">
+                        <option href="/?sortFollowUserPost=1" value="1" {{ $option == '1'  ? "selected" : "" }} >Latest
+                        </option>
+                        <option href="/?sortFollowUserPost=2" value="2" {{ $option == '2'  ? "selected" : "" }} >Oldest
+                        </option>
+                        <option href="/?sortFollowUserPost=3" value="3" {{ $option == '3'  ? "selected" : "" }} >Like
+                        </option>
+                        <option href="/?sortFollowUserPost=4" value="4" {{ $option == '4'  ? "selected" : "" }} >Comments
+                        </option>
+                    </select>
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                 </div>
-            </div>
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            </form>
         </div>
-
-    @endif
-
-
-
-
-
-
-    <div class="container" style="display: flex; justify-content: center;">
-
-
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-sm-10">
+            @if($posts->count() == 0)
+                nie śledzisz nikogo śledziu
+            @else
+                @foreach ($posts as $post)
+                    <div class="card" id="postsCard">
+                        <div class="card-body">
+                            @include('posts.post')
+                        </div>
+                    </div>
+                    <br>
+                @endforeach
+            @endif
+        </div>
+    </div>
+    {{--<div class="d-flex justify-content-end">--}}
+    <div class="d-flex justify-content-end">
         {{ $posts->links() }}
-
     </div>
 
-
 @endsection
-
-
 
 
 
