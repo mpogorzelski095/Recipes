@@ -11,14 +11,15 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-        $categories = Category::orderBy('name', 'asc')->get();
+        $categories = Category::all();
 //        $categories = Category::pluck('name');
+
         return view('posts.categories', compact('categories'));
     }
 
     public function show(Category $category)
     {
-        $posts = $category->posts()->orderBy('created_at', 'desc')->paginate(5);
+        $posts = $category->posts()->orderBy('created_at', 'desc')->simplePaginate(5);
 
         return view('posts.postsFromCategory', compact('posts'));
     }

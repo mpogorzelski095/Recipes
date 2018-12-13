@@ -68,6 +68,11 @@
     width: 100%;
     transition: transform 0.2s ease-in-out;
 }
+#categoryCardBody{
+
+    padding-bottom: 10px;
+    color: #000;
+}
 
 #categoryCard:hover {
     transform: scale(1.05);
@@ -83,7 +88,14 @@
 
 
 }
-
+#showPosth1{
+    font-weight: bold;
+    padding-bottom: 0px;
+}
+#showPosth2{
+    padding-bottom: 10px;
+    font-weight: bold;
+}
 
 #foodPic {
     margin-right: 20px;
@@ -94,18 +106,36 @@
     float: left;
     margin-top: 5px;
 }
+#foodPicInShow {
+    margin-right: 20px;
+    object-fit: cover;
+    height: 500px;
+    width: 100%;
+    //width: 290px;
+    float: left;
+    margin-top: 5px;
+}
 
 .body {
     text-align: justify;
+    font-family: 'Lato', sans-serif;
 }
 
 #main-container {
+    font-family: 'Lato', sans-serif;
     margin-top: 70px;
 }
-
+#navbar{
+    font-family: 'Lato', sans-serif;
+}
 #LikeBtn {
     right: 15px;
     bottom: 0;
+    position: absolute;
+}
+#LikeBtnshowPost {
+    right: 15px;
+    bottom: 15px;
     position: absolute;
 }
 .navbar-nav > .active > a {
@@ -117,5 +147,10 @@
 //    font-size: 1.1em;
 //}
 
+
+#commentForm{
+    font-weight: bold;
+    padding-top: 20px;
+}
 
 

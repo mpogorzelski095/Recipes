@@ -19,14 +19,14 @@
 @section ('content')
     <div class="row" id="category">
         @foreach($categories as $category)
-            <div class="col-sm-6 col-md-3 col-lg-3">
+            <div class="col-sm-6 col-md-4 col-lg-4">
                 <a href="/categories/{{ $category->name }}">
                     <div id="categoryCard" class="card">
-                        <img class="img-fluid category" src="https://i.imgur.com/fz66Jgw.jpg" alt="Card image cap">
-                        <div class="card-body">
+                        <img class="img-fluid category" src="{{ $category->categoryPic }}" alt="Card image cap">
+                        <div class="card-body" id="categoryCardBody">
                             <h3 style="font-weight: bold;" class="card-title">{{ $category->name }} &nbsp;<span
                                     style="font-size: 17px;"
-                                    class="badge badge-success">{{ $category->posts->count() }}</span></h3>
+                                    class="badge badge-dark">{{ $category->posts->count() }}</span></h3 style="font-weight: bold;">
                         </div>
                     </div>
                 </a>

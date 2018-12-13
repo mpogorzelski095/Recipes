@@ -46,7 +46,8 @@
                         </option>
                         <option href="/?sortFollowUserPost=3" value="3" {{ $option == '3'  ? "selected" : "" }} >Like
                         </option>
-                        <option href="/?sortFollowUserPost=4" value="4" {{ $option == '4'  ? "selected" : "" }} >Comments
+                        <option href="/?sortFollowUserPost=4" value="4" {{ $option == '4'  ? "selected" : "" }} >
+                            Comments
                         </option>
                     </select>
                     <div class="input-group-append">
@@ -60,7 +61,18 @@
     <div class="row justify-content-center">
         <div class="col-sm-10">
             @if($posts->count() == 0)
-                nie śledzisz nikogo śledziu
+                <div class="row justify-content-center">
+
+
+                    <div class="card" id="postsCard">
+                        <div class="card-body">
+                            <i class="fas fa-utensils"></i>
+                            No recipes to show <br> <br>
+                            <button type="button" class="btn btn-lg btn-primary" disabled>Find friends</button>
+                        </div>
+                    </div>
+
+                </div>
             @else
                 @foreach ($posts as $post)
                     <div class="card" id="postsCard">

@@ -2,12 +2,6 @@
 
 
 @section ('content')
-
-
-
-
-
-
     {{--<form method="post" enctype="multipart/form-data" action="{{ route('sort3') }}">--}}
         {{--@csrf--}}
         {{--<div class="input-group mb-3">--}}
@@ -27,12 +21,10 @@
         {{--</div>--}}
     {{--</form>--}}
 
-
-
     <div class="row justify-content-center">
-        <div class="col-sm-8">
+        <div class="col-sm-10">
             @foreach ($posts as $post)
-                <div class="card">
+                <div class="card" id="postsCard">
                     <div class="card-body">
                         @include('posts.post')
                     </div>
@@ -42,10 +34,9 @@
         </div>
     </div>
 
-    <div class="row justify-content-center">
-        <div class="col-sm-4">
-            {{ $posts->links() }}
-        </div>
+    <div class="d-flex justify-content-end">
+        {{ $posts->links() }}
     </div>
 
 @endsection
+

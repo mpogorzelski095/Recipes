@@ -9601,6 +9601,11 @@ a.text-dark:focus {
   transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
 }
 
+#categoryCardBody {
+  padding-bottom: 10px;
+  color: #000;
+}
+
 #categoryCard:hover {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
@@ -9613,6 +9618,16 @@ a.text-dark:focus {
   height: 250px;
 }
 
+#showPosth1 {
+  font-weight: bold;
+  padding-bottom: 0px;
+}
+
+#showPosth2 {
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
 #foodPic {
   margin-right: 20px;
   -o-object-fit: cover;
@@ -9623,12 +9638,28 @@ a.text-dark:focus {
   margin-top: 5px;
 }
 
+#foodPicInShow {
+  margin-right: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 500px;
+  width: 100%;
+  float: left;
+  margin-top: 5px;
+}
+
 .body {
   text-align: justify;
+  font-family: "Lato", sans-serif;
 }
 
 #main-container {
+  font-family: "Lato", sans-serif;
   margin-top: 70px;
+}
+
+#navbar {
+  font-family: "Lato", sans-serif;
 }
 
 #LikeBtn {
@@ -9637,7 +9668,18 @@ a.text-dark:focus {
   position: absolute;
 }
 
+#LikeBtnshowPost {
+  right: 15px;
+  bottom: 15px;
+  position: absolute;
+}
+
 .navbar-nav > .active > a {
   font-weight: bold;
+}
+
+#commentForm {
+  font-weight: bold;
+  padding-top: 20px;
 }
 

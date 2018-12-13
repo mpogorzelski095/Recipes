@@ -1,23 +1,39 @@
 [
     {
-        "name": "Breakfast"
+        "name": "VEGETARIAN",
+        "categoryPic" : "https://i.imgur.com/8Ngk4GI.jpg"
     },
     {
-        "name": "Brunch"
+        "name": "BRUNCH",
+        "categoryPic" : "https://i.imgur.com/7gygjIU.jpg"
     },
     {
-        "name": "Lunch"
+        "name": "SALADS",
+        "categoryPic" : "https://i.imgur.com/EeArDGV.jpg"
     },
     {
-        "name": "Dinner"
+        "name": "BAKING",
+        "categoryPic" : "https://i.imgur.com/qqtR9Jf.jpg"
     },
     {
-        "name": "Snacks"
+        "name": "BREAKFAST",
+        "categoryPic" : "https://i.imgur.com/DeOY0WH.jpg"
     },
     {
-        "name": "Soups"
+        "name": "CAKES",
+        "categoryPic" : "https://i.imgur.com/coLLc55.jpg"
     },
     {
-        "name": "Salads"
+        "name": "SOUPS",
+        "categoryPic" : "https://i.imgur.com/4vpvMI0.jpg"
+    },
+    {
+        "name": "SNACKS",
+        "categoryPic" : "https://i.imgur.com/AGIiXh2.jpg"
+    },
+    {
+        "name": "COCKTAILS",
+        "categoryPic" : "https://i.imgur.com/ULM6NrX.jpg"
     }
+
 ]

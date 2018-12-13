@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Faker\Generator as Faker;
 class CategoriesTableSeeder extends Seeder
 {
     /**
@@ -17,6 +17,7 @@ class CategoriesTableSeeder extends Seeder
         foreach ($data as $obj) {
             \App\Category::create([
                 'name' => $obj->name,
+                'categoryPic' => $obj->categoryPic,
             ]);
         }
     }
