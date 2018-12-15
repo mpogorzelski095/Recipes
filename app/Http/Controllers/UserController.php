@@ -82,6 +82,7 @@ class UserController extends Controller
     }
     public function update_avatar(Request $request)
     {
+
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
             $image = Imgur::upload($avatar);
@@ -89,6 +90,7 @@ class UserController extends Controller
             $user->avatar = $image->link();
             $user->save();
         }
+
         $user = Auth::user();
         return view('profile', compact('user'));
     }

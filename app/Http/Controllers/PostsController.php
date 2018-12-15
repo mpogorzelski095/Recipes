@@ -196,18 +196,17 @@ class PostsController extends Controller
 
     public function edit($id)
     {
-
+        $categories = Category::all();
         $post = Post::find($id);
 
-
-        return view('posts.edit', compact('post'));
+        return view('posts.edit', compact('post','categories'));
     }
 
     public function update(Post $post, Request $request)
     {
         $this->validate(request(), [
-            'title' => 'required|min:5|max:25',
-            'body' => 'required|min:5|max:10000',
+            'title' => 'required|min:5|max:100',
+            'body' => 'required|min:5|max:10000', 'category' => 'required', 'ingredients' => 'required',
         ]);
 
         $post->update($request->all());
@@ -227,7 +226,7 @@ class PostsController extends Controller
 
 //        dd($request->all());
         $this->validate(request(), [
-            'title' => 'required|min:5|max:25',
+            'title' => 'required|unique:posts|min:5|max:100',
             'body' => 'required|min:5|max:10000', 'category' => 'required',
             'foodPic' => 'required', 'ingredients' => 'required',
         ]);

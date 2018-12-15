@@ -121,6 +121,9 @@
     font-family: 'Lato', sans-serif;
 }
 
+
+
+
 #main-container {
     font-family: 'Lato', sans-serif;
     margin-top: 70px;
@@ -129,6 +132,11 @@
     font-family: 'Lato', sans-serif;
 }
 #LikeBtn {
+    right: 15px;
+    bottom: 0;
+    position: absolute;
+}
+#SubBtn {
     right: 15px;
     bottom: 0;
     position: absolute;

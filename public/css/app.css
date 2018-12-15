@@ -9668,6 +9668,12 @@ a.text-dark:focus {
   position: absolute;
 }
 
+#SubBtn {
+  right: 15px;
+  bottom: 0;
+  position: absolute;
+}
+
 #LikeBtnshowPost {
   right: 15px;
   bottom: 15px;
